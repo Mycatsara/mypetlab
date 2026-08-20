@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>가이드 — 마이펫랩</title>
+<meta name="description" content="고양이·강아지 돌봄 가이드 모음. 모래 고르기, 노령묘 케어 등 집사와 견주에게 필요한 글을 계산기와 함께 정리합니다.">
+<meta property="og:title" content="가이드 — 마이펫랩">
+<meta property="og:description" content="고양이·강아지 돌봄 가이드 모음.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F7F2E9;
+    --ink:#2B241C;
+    --paper:#FFFFFF;
+    --orange:#E07A3F;
+    --orange-deep:#B85C28;
+    --line:#E4DCCE;
+    --sub:#6E6455;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Noto Sans KR',sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.6;
+  }
+  .wrap{max-width:640px;margin:0 auto;padding:32px 20px 60px}
+
+  .crumb{font-size:12.5px;color:#A29883;margin-bottom:20px}
+  .crumb a{color:#A29883;text-decoration:none}
+  .crumb a:hover{color:var(--orange)}
+
+  header .eyebrow{
+    display:inline-block;font-size:12px;font-weight:700;letter-spacing:2px;
+    color:var(--orange);border:1.5px solid var(--orange);
+    padding:4px 10px;border-radius:4px;margin-bottom:14px;
+  }
+  header h1{font-size:28px;font-weight:900;letter-spacing:-0.5px}
+  header p{margin-top:10px;font-size:15px;color:var(--sub)}
+
+  .list{margin-top:26px;display:flex;flex-direction:column;gap:14px}
+  .post-card{
+    display:block;background:var(--paper);border:1px solid var(--line);
+    border-radius:14px;padding:20px;text-decoration:none;color:var(--ink);
+    transition:border-color .15s;
+  }
+  .post-card:hover{border-color:var(--orange)}
+  .post-card .tag{
+    display:inline-block;font-size:11px;font-weight:700;letter-spacing:.5px;
+    color:var(--orange);background:#FDF1E8;border-radius:4px;padding:2px 7px;margin-bottom:8px;
+  }
+  .post-card h2{font-size:17px;font-weight:900;line-height:1.45;letter-spacing:-0.3px}
+  .post-card p{margin-top:7px;font-size:13.5px;color:var(--sub)}
+  .post-card .go{display:inline-block;margin-top:10px;font-size:13.5px;font-weight:700;color:var(--orange)}
+
+  footer{margin-top:48px;text-align:center;font-size:12px;color:#A29883}
+  footer a{color:#A29883}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="crumb"><a href="/">홈</a> › 가이드</nav>
+
+  <header>
+    <span class="eyebrow">가이드</span>
+    <h1>돌봄 가이드 모음</h1>
+    <p>계산기로 답이 안 나오는 것들을 글로 정리합니다. 모래 고르기부터 노령묘 케어까지.</p>
+  </header>
+
+  <div class="list">
+    <a class="post-card" href="/guide/nomyo.html">
+      <span class="tag">노령묘</span>
+      <h2>노령묘 케어 가이드 — 몇 살부터, 뭐가 달라질까</h2>
+      <p>나이 기준(7살 중년, 11살 노령)과 놓치기 쉬운 노화 신호 5가지, 물 섭취량 경고, 사료 전환과 집 안 환경까지.</p>
+      <span class="go">읽어보기 →</span>
+    </a>
+    <a class="post-card" href="/guide/morae.html">
+      <span class="tag">고양이 화장실</span>
+      <h2>고양이 모래 종류 총정리 — 두부모래와 벤토나이트, 우리 집엔 뭐가 맞을까</h2>
+      <p>벤토나이트·두부·크리스탈의 먼지·응고력·뒤처리·가격 비교와 상황별 추천, 모래 교체 요령까지.</p>
+      <span class="go">읽어보기 →</span>
+    </a>
+  </div>
+
+  <footer>
+    <p><a href="/">마이펫랩 mypetlab.kr</a> · 우리 아이 돌봄 계산기</p>
+  </footer>
+</div>
+</body>
+</html>

@@ -68,6 +68,23 @@
   section h2{font-size:20px;font-weight:900;letter-spacing:-0.3px;margin-bottom:12px}
   section p{font-size:14.5px;color:#3E362B;margin-bottom:10px}
 
+  .related{display:flex;flex-direction:column;gap:10px}
+  .rel-card{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    background:var(--paper);border:1px solid var(--line);border-radius:10px;
+    padding:13px 16px;text-decoration:none;transition:border-color .15s;
+  }
+  .rel-card:hover{border-color:var(--orange)}
+  .rel-card .txt{min-width:0}
+  .rel-card .tag{
+    display:inline-block;font-size:11px;font-weight:700;letter-spacing:.5px;
+    color:var(--orange);background:#FDF1E8;border-radius:4px;padding:2px 7px;margin-bottom:5px;
+  }
+  .rel-card .t{font-size:14px;font-weight:700;color:var(--ink);line-height:1.45}
+  .rel-card .arr{flex:none;color:var(--orange);font-weight:700;font-size:15px}
+  .rel-more{display:inline-block;margin-top:12px;font-size:13.5px;font-weight:700;color:var(--orange);text-decoration:none}
+  .rel-more:hover{text-decoration:underline}
+
   details{
     background:var(--paper);border:1px solid var(--line);
     border-radius:10px;margin-bottom:8px;
@@ -114,6 +131,21 @@
     <h2>이 사이트는요</h2>
     <p>반려동물을 키우다 보면 의외로 <b>숫자가 궁금한 순간</b>이 많습니다. 우리 아이가 사람 나이로 몇 살인지, 사료는 하루에 몇 g을 줘야 하는지, 포장지 급여표는 왜 이렇게 복잡한지.</p>
     <p>그때마다 바로 답을 주는 계산기를 하나씩 만들어 모으고 있습니다. 전부 무료이고, 가입 없이 쓸 수 있습니다.</p>
+  </section>
+
+  <section>
+    <h2>읽어볼 만한 글</h2>
+    <div class="related">
+      <a class="rel-card" href="/guide/nomyo.html">
+        <span class="txt"><span class="tag">노령묘</span><br><span class="t">노령묘 케어 가이드 — 몇 살부터, 뭐가 달라질까</span></span>
+        <span class="arr">→</span>
+      </a>
+      <a class="rel-card" href="/guide/morae.html">
+        <span class="txt"><span class="tag">고양이 화장실</span><br><span class="t">고양이 모래 종류 총정리 — 두부모래 vs 벤토나이트</span></span>
+        <span class="arr">→</span>
+      </a>
+    </div>
+    <a class="rel-more" href="/guide/">가이드 전체 보기 →</a>
   </section>
 
   <section>
