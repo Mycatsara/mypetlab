@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>마이펫랩 — 강아지·고양이 나이 계산기, 사료 급여량 계산기</title>
+<meta name="description" content="강아지·고양이 나이 계산기, 사료 급여량 계산기. 우리 아이가 사람 나이로 몇 살인지, 하루 사료는 몇 g 줘야 하는지 바로 계산하세요. 마이펫랩 — 무료 반려동물 도구 모음.">
+<meta property="og:title" content="마이펫랩 — 반려동물 계산기 모음">
+<meta property="og:description" content="강아지·고양이 나이 환산, 사료 급여량 계산. 집사와 견주를 위한 무료 도구.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F7F2E9;        /* 따뜻한 크림 */
+    --ink:#2B241C;       /* 진한 갈색 먹색 */
+    --paper:#FFFFFF;
+    --orange:#E07A3F;    /* 발바닥 주황 */
+    --orange-deep:#B85C28;
+    --green:#3E8E6D;     /* 건강 초록 */
+    --line:#E4DCCE;
+    --sub:#6E6455;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Noto Sans KR',sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.6;
+  }
+  .wrap{max-width:560px;margin:0 auto;padding:32px 20px 60px}
+
+  header .eyebrow{
+    display:inline-block;font-size:12px;font-weight:700;letter-spacing:2px;
+    color:var(--orange);border:1.5px solid var(--orange);
+    padding:4px 10px;border-radius:4px;margin-bottom:14px;
+  }
+  header h1{font-size:30px;font-weight:900;line-height:1.3;letter-spacing:-0.5px}
+  header h1 .hi{color:var(--orange)}
+  header p{margin-top:10px;font-size:15px;color:var(--sub)}
+
+  /* 도구 카드 */
+  .tools{margin-top:26px;display:flex;flex-direction:column;gap:14px}
+  .tool-card{
+    display:block;background:var(--paper);border:1px solid var(--line);
+    border-radius:16px;padding:22px 20px;text-decoration:none;color:var(--ink);
+    box-shadow:0 3px 12px rgba(43,36,28,.06);
+    transition:border-color .15s, transform .15s;
+    position:relative;overflow:hidden;
+  }
+  .tool-card:hover{border-color:var(--orange);transform:translateY(-2px)}
+  .tool-card .emoji{
+    font-size:34px;line-height:1;display:block;margin-bottom:12px;
+  }
+  .tool-card h2{font-size:19px;font-weight:900;letter-spacing:-0.3px}
+  .tool-card p{margin-top:6px;font-size:14px;color:var(--sub)}
+  .tool-card .go{
+    display:inline-block;margin-top:12px;font-size:14px;font-weight:700;color:var(--orange);
+  }
+  .tool-card .paw{
+    position:absolute;right:-10px;bottom:-14px;font-size:80px;opacity:.07;transform:rotate(-20deg);
+  }
+
+  section{margin-top:44px}
+  section h2{font-size:20px;font-weight:900;letter-spacing:-0.3px;margin-bottom:12px}
+  section p{font-size:14.5px;color:#3E362B;margin-bottom:10px}
+
+  details{
+    background:var(--paper);border:1px solid var(--line);
+    border-radius:10px;margin-bottom:8px;
+  }
+  summary{
+    padding:14px 16px;font-size:14.5px;font-weight:700;cursor:pointer;
+    list-style:none;display:flex;justify-content:space-between;align-items:center;
+  }
+  summary::after{content:"+";font-weight:400;color:var(--sub);font-size:18px}
+  details[open] summary::after{content:"–"}
+  details .a{padding:0 16px 14px;font-size:14px;color:#3E362B}
+
+  footer{margin-top:48px;text-align:center;font-size:12px;color:#A29883}
+  footer .disclaimer{max-width:420px;margin:0 auto 8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <span class="eyebrow">MYPETLAB · 반려동물 무료 도구</span>
+    <h1>우리 아이, <span class="hi">숫자</span>로<br>더 잘 돌보기 🐾</h1>
+    <p>강아지·고양이 나이 환산부터 하루 사료량까지. 집사와 견주에게 필요한 계산기를 모았습니다.</p>
+  </header>
+
+  <div class="tools">
+    <a class="tool-card" href="age/">
+      <span class="emoji">🎂</span>
+      <h2>강아지·고양이 나이 계산기</h2>
+      <p>우리 아이는 사람 나이로 몇 살일까? 생애 단계(성장기·청년·중년·노령)까지 알려드립니다.</p>
+      <span class="go">계산해 보기 →</span>
+      <span class="paw">🐾</span>
+    </a>
+    <a class="tool-card" href="feed/">
+      <span class="emoji">🍚</span>
+      <h2>사료 급여량 계산기</h2>
+      <p>체중과 사료 칼로리를 넣으면 하루 급여량(g)과 끼니별 양을 계산합니다. 중성화·다이어트·노령까지 반영.</p>
+      <span class="go">계산해 보기 →</span>
+      <span class="paw">🐾</span>
+    </a>
+  </div>
+
+  <section>
+    <h2>이 사이트는요</h2>
+    <p>반려동물을 키우다 보면 의외로 <b>숫자가 궁금한 순간</b>이 많습니다. 우리 아이가 사람 나이로 몇 살인지, 사료는 하루에 몇 g을 줘야 하는지, 포장지 급여표는 왜 이렇게 복잡한지.</p>
+    <p>그때마다 바로 답을 주는 계산기를 하나씩 만들어 모으고 있습니다. 모든 도구는 무료이고, 가입 없이 쓸 수 있습니다.</p>
+  </section>
+
+  <section>
+    <h2>자주 묻는 질문</h2>
+    <details>
+      <summary>계산 결과는 어떤 기준으로 나오나요?</summary>
+      <div class="a">나이 환산은 수의학계에서 널리 쓰이는 환산표(첫해 15살, 둘째 해 9살, 이후 크기별 가산)를, 사료 급여량은 휴지기 에너지 요구량(RER) 공식을 기반으로 합니다. 각 계산기 페이지 하단에 기준을 자세히 적어 두었습니다.</div>
+    </details>
+    <details>
+      <summary>결과를 그대로 따라도 되나요?</summary>
+      <div class="a">계산기는 참고용 가이드입니다. 아이마다 체질·활동량·건강 상태가 달라서, 실제 급여량이나 건강 관리는 사료 포장지의 권장표와 수의사 상담을 우선하세요.</div>
+    </details>
+    <details>
+      <summary>다른 계산기도 추가되나요?</summary>
+      <div class="a">네. 예방접종 일정, 먹어도 되는 음식 사전 등 집사·견주에게 필요한 도구를 계속 추가할 예정입니다.</div>
+    </details>
+  </section>
+
+  <footer>
+    <p class="disclaimer">본 사이트의 계산기는 참고용 도구이며, 반려동물의 건강에 관한 결정은 수의사와 상담하세요.</p>
+    <p>마이펫랩 mypetlab.kr · 반려동물 무료 도구</p>
+  </footer>
+</div>
+</body>
+</html>

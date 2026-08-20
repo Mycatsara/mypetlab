@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>강아지·고양이 나이 계산기 — 사람 나이로 몇 살? | 마이펫랩</title>
+<meta name="description" content="강아지 나이, 고양이 나이를 사람 나이로 환산하는 계산기. 수의학계 환산표 기준으로 생애 단계(성장기·청년·중년·노령)까지 알려드립니다.">
+<meta property="og:title" content="강아지·고양이 나이 계산기">
+<meta property="og:description" content="우리 아이는 사람 나이로 몇 살일까? 생애 단계까지 바로 확인.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "고양이 나이는 사람 나이로 어떻게 계산하나요?", "acceptedAnswer": {"@type": "Answer", "text": "널리 쓰이는 환산법은 첫해를 사람 나이 15살, 두 번째 해를 24살로 보고, 이후 1년마다 4살씩 더하는 방식입니다. 예를 들어 5살 고양이는 사람 나이로 약 36살입니다."}},
+    {"@type": "Question", "name": "강아지 나이 계산은 왜 크기에 따라 다른가요?", "acceptedAnswer": {"@type": "Answer", "text": "대형견일수록 노화가 빨리 진행되기 때문입니다. 생후 2년까지는 크기와 무관하게 비슷하지만, 이후에는 소형견은 1년에 약 4살, 중형견은 5살, 대형견은 6살씩 나이를 먹는 것으로 봅니다."}},
+    {"@type": "Question", "name": "고양이는 몇 살부터 노령묘인가요?", "acceptedAnswer": {"@type": "Answer", "text": "일반적으로 7살부터 중년기, 11살부터 노령기로 봅니다. 11살 이상이면 사람 나이로 60대에 해당하므로 정기 건강검진 주기를 늘리는 것이 좋습니다."}}
+  ]
+}
+</script>
+<style>
+  :root{
+    --bg:#F7F2E9;
+    --ink:#2B241C;
+    --paper:#FFFFFF;
+    --orange:#E07A3F;
+    --orange-deep:#B85C28;
+    --green:#3E8E6D;
+    --line:#E4DCCE;
+    --sub:#6E6455;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Noto Sans KR',sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.6;
+  }
+  .wrap{max-width:560px;margin:0 auto;padding:32px 20px 60px}
+
+  .home-link{display:inline-block;font-size:13px;font-weight:700;color:var(--sub);text-decoration:none;margin-bottom:18px}
+  .home-link:hover{color:var(--orange)}
+
+  header .eyebrow{
+    display:inline-block;font-size:12px;font-weight:700;letter-spacing:2px;
+    color:var(--orange);border:1.5px solid var(--orange);
+    padding:4px 10px;border-radius:4px;margin-bottom:14px;
+  }
+  header h1{font-size:29px;font-weight:900;line-height:1.3;letter-spacing:-0.5px}
+  header h1 .hi{color:var(--orange)}
+  header p{margin-top:10px;font-size:15px;color:var(--sub)}
+
+  /* 동물 선택 탭 */
+  .tabs{
+    display:flex;margin-top:26px;
+    background:#EAE3D5;border-radius:12px;padding:4px;
+  }
+  .tabs button{
+    flex:1;font-family:inherit;font-size:15px;font-weight:700;
+    padding:11px 8px;border:none;border-radius:9px;
+    background:transparent;color:var(--sub);cursor:pointer;
+  }
+  .tabs button.on{background:var(--paper);color:var(--ink);box-shadow:0 1px 3px rgba(43,36,28,.12)}
+  .tabs button:focus-visible{outline:3px solid var(--orange)}
+
+  .card{
+    background:var(--paper);border:1px solid var(--line);
+    border-radius:14px;padding:22px 20px;margin-top:14px;
+  }
+  label{display:block;font-size:13px;font-weight:700;color:var(--sub);margin-bottom:8px}
+  .age-row{display:flex;gap:10px}
+  .age-field{flex:1}
+  .input-row{display:flex;align-items:center;gap:8px}
+  input[type=text]{
+    flex:1;width:100%;min-width:0;
+    font-family:'IBM Plex Mono',monospace;font-size:24px;font-weight:600;
+    padding:12px 12px;text-align:right;
+    border:2px solid var(--line);border-radius:10px;
+    background:#FBFAF7;color:var(--ink);
+  }
+  input[type=text]:focus{outline:none;border-color:var(--orange)}
+  .unit{font-size:15px;font-weight:700;color:var(--sub);flex:none}
+
+  /* 강아지 크기 선택 */
+  .size-box{margin-top:16px}
+  .size-chips{display:flex;gap:8px}
+  .size-chips button{
+    flex:1;font-family:inherit;font-size:13px;font-weight:700;
+    padding:10px 4px;border-radius:10px;cursor:pointer;
+    border:1.5px solid var(--line);background:var(--paper);color:var(--sub);
+    line-height:1.35;
+  }
+  .size-chips button small{display:block;font-size:11px;font-weight:500}
+  .size-chips button.on{border-color:var(--orange);background:#FDF1E8;color:var(--ink)}
+  .size-chips button:focus-visible{outline:3px solid var(--orange)}
+
+  /* 결과: 건강수첩 카드 */
+  .result{
+    margin-top:22px;background:var(--paper);border-radius:14px;
+    box-shadow:0 6px 20px rgba(43,36,28,.10);overflow:hidden;
+  }
+  .result-head{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:16px 20px;border-bottom:1.5px dashed var(--line);
+  }
+  .result-head b{font-size:14px;letter-spacing:1px}
+  .stamp{
+    font-size:11px;font-weight:900;color:var(--orange);
+    border:2px solid var(--orange);border-radius:6px;
+    padding:3px 8px;transform:rotate(-6deg);letter-spacing:1px;
+  }
+  .result-body{padding:18px 20px 8px}
+  .r-line{display:flex;justify-content:space-between;padding:7px 0;font-size:15px;font-family:'IBM Plex Mono',monospace}
+  .r-line .k{font-family:'Noto Sans KR',sans-serif;font-size:13.5px;color:var(--sub);font-weight:500}
+  .r-total{
+    margin:10px -20px 0;padding:16px 20px 20px;
+    background:var(--orange);color:#fff;
+  }
+  .r-total .k{font-size:13px;font-weight:700;letter-spacing:1.5px;opacity:.9}
+  .r-total .v{
+    display:block;font-family:'IBM Plex Mono',monospace;
+    font-size:36px;font-weight:600;margin-top:4px;letter-spacing:-1px;
+  }
+  .r-total .stage{
+    display:inline-block;margin-top:10px;font-size:13.5px;font-weight:700;
+    background:rgba(255,255,255,.2);border-radius:999px;padding:4px 12px;
+  }
+  .r-note{padding:12px 20px 16px;font-size:13.5px;color:var(--sub);background:#FDF9F2}
+
+  .tip{
+    margin-top:20px;background:#FDF6EA;border:1px solid #F0DDBB;
+    border-radius:10px;padding:14px 16px;font-size:13.5px;color:#6B5320;
+  }
+
+  section{margin-top:44px}
+  section h2{font-size:20px;font-weight:900;letter-spacing:-0.3px;margin-bottom:12px}
+  section p{font-size:14.5px;color:#3E362B;margin-bottom:10px}
+  table{
+    width:100%;border-collapse:collapse;background:var(--paper);
+    border:1px solid var(--line);border-radius:10px;overflow:hidden;
+    font-size:13.5px;margin-bottom:10px;
+  }
+  th,td{padding:9px 10px;text-align:center;border-bottom:1px solid var(--line)}
+  th{background:#F3EDE1;font-weight:700;font-size:12.5px;color:var(--sub)}
+  tr:last-child td{border-bottom:none}
+
+  details{
+    background:var(--paper);border:1px solid var(--line);
+    border-radius:10px;margin-bottom:8px;
+  }
+  summary{
+    padding:14px 16px;font-size:14.5px;font-weight:700;cursor:pointer;
+    list-style:none;display:flex;justify-content:space-between;align-items:center;
+  }
+  summary::after{content:"+";font-weight:400;color:var(--sub);font-size:18px}
+  details[open] summary::after{content:"–"}
+  details .a{padding:0 16px 14px;font-size:14px;color:#3E362B}
+
+  .rel-card{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    background:var(--paper);border:1px solid var(--line);border-radius:10px;
+    padding:13px 16px;text-decoration:none;transition:border-color .15s;margin-top:16px;
+  }
+  .rel-card:hover{border-color:var(--orange)}
+  .rel-card .txt{min-width:0}
+  .rel-card .tag{
+    display:inline-block;font-size:11px;font-weight:700;letter-spacing:.5px;
+    color:var(--orange);background:#FDF1E8;border-radius:4px;padding:2px 7px;margin-bottom:5px;
+  }
+  .rel-card .t{font-size:14px;font-weight:700;color:var(--ink);line-height:1.45}
+  .rel-card .arr{flex:none;color:var(--orange);font-weight:700;font-size:15px}
+
+  footer{margin-top:48px;text-align:center;font-size:12px;color:#A29883}
+  footer .disclaimer{max-width:420px;margin:0 auto 8px}
+  footer a{color:#A29883}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="home-link" href="../">← 마이펫랩 홈</a>
+
+  <header>
+    <span class="eyebrow">나이 환산</span>
+    <h1>강아지·고양이 <span class="hi">나이 계산기</span></h1>
+    <p>우리 아이는 사람 나이로 몇 살일까요? 수의학계에서 쓰는 환산표 기준으로 생애 단계까지 알려드립니다.</p>
+  </header>
+
+  <div class="tabs" role="tablist" aria-label="동물 선택">
+    <button id="tabCat" class="on" role="tab" aria-selected="true">🐱 고양이</button>
+    <button id="tabDog" role="tab" aria-selected="false">🐶 강아지</button>
+  </div>
+
+  <div class="card">
+    <label>우리 아이 나이</label>
+    <div class="age-row">
+      <div class="age-field">
+        <div class="input-row">
+          <input type="text" id="years" inputmode="numeric" placeholder="0" autocomplete="off" aria-label="나이 (년)">
+          <span class="unit">살</span>
+        </div>
+      </div>
+      <div class="age-field">
+        <div class="input-row">
+          <input type="text" id="months" inputmode="numeric" placeholder="0" autocomplete="off" aria-label="나이 (개월)">
+          <span class="unit">개월</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="size-box" id="sizeBox" hidden>
+      <label>강아지 크기</label>
+      <div class="size-chips" role="group" aria-label="강아지 크기 선택">
+        <button data-size="small" class="on">소형견<small>10kg 미만</small></button>
+        <button data-size="medium">중형견<small>10~25kg</small></button>
+        <button data-size="large">대형견<small>25kg 이상</small></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="result" role="status" aria-live="polite">
+    <div class="result-head">
+      <b>나이 환산 결과</b>
+      <span class="stamp" id="speciesStamp">CAT</span>
+    </div>
+    <div class="result-body">
+      <div class="r-line"><span class="k">입력한 나이</span><span class="v" id="rInput">0살</span></div>
+      <div class="r-total">
+        <span class="k">사람 나이로 치면</span>
+        <span class="v" id="rHuman">0세</span>
+        <span class="stage" id="rStage">나이를 입력해 주세요</span>
+      </div>
+    </div>
+    <div class="r-note" id="rNote">나이를 입력하면 생애 단계와 관리 팁을 알려드려요.</div>
+  </div>
+
+  <div class="tip">
+    💡 반려동물의 1년은 사람의 1년과 다릅니다. 특히 첫 2년 동안 훌쩍 자라서, 2살이면 벌써 사람 나이 24살이에요.
+  </div>
+
+  <section>
+    <h2>나이 환산, 어떻게 계산하나요?</h2>
+    <p>이 계산기는 수의학계에서 널리 쓰이는 환산법을 따릅니다. <b>첫해는 15살, 두 번째 해는 9살</b>을 더해 2살에 사람 나이 24살이 되고, 그 이후는 1년마다 아래만큼 더합니다.</p>
+    <table>
+      <thead><tr><th>구분</th><th>3살부터 1년마다</th><th>노령 기준</th></tr></thead>
+      <tbody>
+        <tr><td>고양이</td><td>+4살</td><td>11살~ (사람 60대)</td></tr>
+        <tr><td>소형견</td><td>+4살</td><td>10살~</td></tr>
+        <tr><td>중형견</td><td>+5살</td><td>8살~</td></tr>
+        <tr><td>대형견</td><td>+6살</td><td>7살~</td></tr>
+      </tbody>
+    </table>
+    <p>대형견일수록 노화가 빨라서 같은 나이라도 사람 나이가 높게 나옵니다. 고양이는 크기 차이가 작아 하나의 기준을 씁니다.</p>
+  </section>
+
+  <section>
+    <h2>자주 묻는 질문</h2>
+    <details>
+      <summary>고양이 7살이면 벌써 중년인가요?</summary>
+      <div class="a">네, 사람 나이로 약 44살에 해당해 중년기에 들어섭니다. 겉으로는 여전히 팔팔해 보여도 신장·치아 등에서 서서히 변화가 시작되는 시기라, 1년에 한 번 건강검진을 챙기기 시작하면 좋습니다.</div>
+    </details>
+    <details>
+      <summary>노령묘·노령견은 뭘 신경 써야 하나요?</summary>
+      <div class="a">체중 변화, 물 마시는 양, 화장실 습관이 대표적인 건강 신호입니다. 특히 고양이는 노령기에 신장 질환이 흔해서 물 섭취량이 갑자기 늘면 검진을 받아보는 것이 좋습니다. 사료도 노령용으로 바꾸는 것을 고려하세요.</div>
+    </details>
+    <details>
+      <summary>"강아지 1년 = 사람 7년"은 틀린 건가요?</summary>
+      <div class="a">오래된 어림법인데 실제와는 차이가 큽니다. 반려동물은 어릴 때 빨리 자라고 나이 들수록 천천히 늙기 때문에, 첫해 15살·둘째 해 9살·이후 크기별 가산 방식이 실제 노화 속도에 더 가깝습니다.</div>
+    </details>
+    <details>
+      <summary>개월 수만 입력해도 되나요?</summary>
+      <div class="a">네. 예를 들어 8개월이면 "0살 8개월"로 입력하면 됩니다. 성장기에는 몇 개월 차이로도 환산 나이가 크게 달라져서, 개월까지 넣으면 더 정확합니다.</div>
+    </details>
+  </section>
+
+  <section>
+    <h2>함께 쓰면 좋은 도구</h2>
+    <a class="rel-card" href="../feed/">
+      <span class="txt"><span class="tag">급여량</span><br><span class="t">사료 급여량 계산기 — 하루에 몇 g 줘야 할까?</span></span>
+      <span class="arr">→</span>
+    </a>
+  </section>
+
+  <footer>
+    <p class="disclaimer">본 계산기는 일반적인 환산표 기반의 참고용 도구입니다. 반려동물의 건강 상태는 수의사와 상담하세요.</p>
+    <p><a href="../">마이펫랩 mypetlab.kr</a> · 반려동물 무료 도구</p>
+  </footer>
+</div>
+
+<script>
+  const yearsEl = document.getElementById('years');
+  const monthsEl = document.getElementById('months');
+  const tabCat = document.getElementById('tabCat');
+  const tabDog = document.getElementById('tabDog');
+  const sizeBox = document.getElementById('sizeBox');
+  let species = 'cat';
+  let dogSize = 'small';
+
+  const DOG_RATE = { small: 4, medium: 5, large: 6 };
+
+  function parseNum(el){
+    return parseInt(el.value.replace(/[^0-9]/g,''), 10) || 0;
+  }
+
+  function humanAge(t){
+    // t: 반려동물 나이 (년, 소수 포함)
+    if(t <= 0) return 0;
+    if(t <= 1) return 15 * t;
+    if(t <= 2) return 15 + 9 * (t - 1);
+    const rate = species === 'cat' ? 4 : DOG_RATE[dogSize];
+    return 24 + rate * (t - 2);
+  }
+
+  function stageInfo(h, t){
+    // h: 사람 나이, t: 동물 나이
+    if(t === 0) return null;
+    if(h < 20) return {label:'성장기 🌱', note:'한창 클 시기예요. 성장기 전용 사료와 예방접종 일정을 챙겨 주세요.'};
+    if(h < 40) return {label:'청년기 ⚡', note:'가장 활발한 시기예요. 놀이로 에너지를 충분히 풀어 주면 문제 행동 예방에도 좋아요.'};
+    if(h < 56) return {label:'중년기 🍂', note:'겉은 팔팔해도 몸속 변화가 시작되는 시기. 1년에 한 번 건강검진을 챙기기 시작하면 좋아요.'};
+    if(h < 75) return {label:'노령기 🌙', note:'체중·물 마시는 양·화장실 습관 변화를 눈여겨보세요. 검진은 6개월~1년 주기를 권해요.'};
+    return {label:'초고령기 👑', note:'장수하고 있어요! 무리 없는 생활 환경과 정기 검진으로 편안한 하루하루를 만들어 주세요.'};
+  }
+
+  function render(){
+    const y = parseNum(yearsEl);
+    const m = Math.min(parseNum(monthsEl), 11);
+    const t = y + m / 12;
+    const h = humanAge(t);
+    const hRound = Math.round(h);
+
+    document.getElementById('rInput').textContent =
+      m > 0 ? `${y}살 ${m}개월` : `${y}살`;
+    document.getElementById('rHuman').textContent = `약 ${hRound}세`;
+
+    const s = stageInfo(hRound, t);
+    document.getElementById('rStage').textContent = s ? s.label : '나이를 입력해 주세요';
+    document.getElementById('rNote').textContent = s ? s.note : '나이를 입력하면 생애 단계와 관리 팁을 알려드려요.';
+  }
+
+  function setSpecies(sp){
+    species = sp;
+    tabCat.classList.toggle('on', sp==='cat');
+    tabDog.classList.toggle('on', sp==='dog');
+    tabCat.setAttribute('aria-selected', sp==='cat');
+    tabDog.setAttribute('aria-selected', sp==='dog');
+    sizeBox.hidden = sp !== 'dog';
+    document.getElementById('speciesStamp').textContent = sp==='cat' ? 'CAT' : 'DOG';
+    render();
+  }
+  tabCat.addEventListener('click', ()=>setSpecies('cat'));
+  tabDog.addEventListener('click', ()=>setSpecies('dog'));
+
+  document.querySelectorAll('.size-chips button').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      dogSize = btn.dataset.size;
+      document.querySelectorAll('.size-chips button').forEach(b=>b.classList.toggle('on', b===btn));
+      render();
+    });
+  });
+
+  [yearsEl, monthsEl].forEach(el=>{
+    el.addEventListener('input', ()=>{
+      const raw = el.value.replace(/[^0-9]/g,'');
+      el.value = raw;
+      render();
+    });
+  });
+
+  render();
+</script>
+</body>
+</html>
