@@ -64,7 +64,7 @@ description: 마이펫랩 mypetlab.kr 디자인 규칙(색상·폰트·컴포넌
 → .result(result-head(제목+stamp) → result-body(.r-line → .r-total(.stage)) → .r-note)
 → .tip(선택) → section(안내·표) → section(FAQ, JSON-LD FAQPage와 일치) → .rel-card 2개 → footer
 ```
-- head: charset, viewport, title(" | 마이펫랩"), description, og 3종, Google Fonts, JSON-LD, **GA4 스니펫(G-K3SMLQRKGM) `</head>` 직전** — `age/index.html`에서 복사. (AdSense 스크립트는 승인 후 추가 예정)
+- head: charset, viewport, title(" | 마이펫랩"), description, og 3종, **og:url·og:image(/og.png 1200×630)·og:site_name·twitter:card·canonical**, Google Fonts, JSON-LD, **BreadcrumbList(홈 › 계산기명)**, **GA4 스니펫(G-K3SMLQRKGM) `</head>` 직전** — `age/index.html`에서 복사. (AdSense 스크립트는 승인 후 추가 예정)
 - GA 이벤트: 첫 입력 `calc_use{tool,species}`, 동물 전환 `calc_species` — `typeof gtag==='function'` 가드. **체중·나이 값은 담지 않는다**
 - 쿠파스·쉐어링크 링크가 들어가는 페이지는 제휴 고지 문구 필수(privacy 6항과 일치). 링크 클릭은 GA 스니펫이 `affiliate_click`으로 자동 추적
 
