@@ -50,7 +50,7 @@ git log --since=midnight --diff-filter=A --name-only --pretty=format: -- guide/ 
 ## 4단계: 3종 반영 (하나라도 빠지면 안 됨)
 
 1. **guide/index.html**: `.list` 맨 위에 새 `.post-card` 추가 (태그·제목·메타설명 기반 요약·"읽어보기 →")
-2. **sitemap.xml**: `</urlset>` 앞에 새 url 블록 추가 (lastmod = 게시일)
+2. **sitemap.xml**: `</urlset>` 앞에 새 url 블록 추가 (`<lastmod>`=게시일). **글의 `dateModified`를 갱신하면 sitemap의 `<lastmod>`도 같은 날짜로 함께 갱신**한다(불일치 금지)
 3. **index.html(홈)**: "읽어볼 만한 글" `.related`에 새 `.rel-card` 추가. **카드가 6개를 넘으면 추가 전에 운영자에게 어떤 글을 홈에서 뺄지 확인**
 4. (해당 시) 관련 계산기 페이지의 "함께 보면 좋아요"에 카드 추가 여부 판단
 
