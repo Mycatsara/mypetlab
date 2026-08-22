@@ -51,6 +51,7 @@ description: 마이펫랩 mypetlab.kr 디자인 규칙(색상·폰트·컴포넌
 | `.summary-box` (글) | paper, 1px line, **왼쪽 4px 주황 보더**, radius 10px |
 | `.cta` (글) | 주황 배경 흰 글자 radius 12px padding 20px, 링크 하나만, 밑줄 offset 3px |
 | `.footnote` | 13px #A29883 |
+| `.pubdate` 게시일 | 글 헤더 `.meta` 바로 아래, `margin-top:6px;font-size:12.5px;color:#A29883` |
 | `footer` | 12px #A29883 중앙, `.disclaimer`(수의사 상담 문구) → "마이펫랩 mypetlab.kr · 우리 아이 돌봄 계산기" → 가이드·사이트 소개·개인정보처리방침 |
 
 그림자는 세 가지(`0 1px 3px` / `0 3px 12px` / `0 6px 20px`)만. 모서리 4 / 9 / 10 / 12 / 14 / 16 / 999px만. transition `.15s`만.
@@ -64,7 +65,7 @@ description: 마이펫랩 mypetlab.kr 디자인 규칙(색상·폰트·컴포넌
 → .result(result-head(제목+stamp) → result-body(.r-line → .r-total(.stage)) → .r-note)
 → .tip(선택) → section(안내·표) → section(FAQ, JSON-LD FAQPage와 일치) → .rel-card 2개 → footer
 ```
-- head: charset, viewport, title(" | 마이펫랩"), description, og 3종, **og:url·og:image(/og.png 1200×630)·og:site_name·twitter:card·canonical**, Google Fonts, JSON-LD, **BreadcrumbList(홈 › 계산기명)**, **GA4 스니펫(G-K3SMLQRKGM) `</head>` 직전** — `age/index.html`에서 복사. (AdSense 스크립트는 승인 후 추가 예정)
+- head: charset, viewport, title(" | 마이펫랩"), description, og 3종, **og:url·og:image(/og.png 1200×630)·og:site_name·twitter:card·canonical**, Google Fonts, JSON-LD, **BreadcrumbList(홈 › 계산기명)**, **WebApplication(name·url·applicationCategory=LifestyleApplication·isAccessibleForFree·offers 0원·dateModified)**, **GA4 스니펫(G-K3SMLQRKGM) `</head>` 직전** — `age/index.html`에서 복사. (AdSense 스크립트는 승인 후 추가 예정)
 - GA 이벤트: 첫 입력 `calc_use{tool,species}`, 동물 전환 `calc_species` — `typeof gtag==='function'` 가드. **체중·나이 값은 담지 않는다**
 - 쿠파스·쉐어링크 링크가 들어가는 페이지는 제휴 고지 문구 필수(privacy 6항과 일치). 링크 클릭은 GA 스니펫이 `affiliate_click`으로 자동 추적
 
