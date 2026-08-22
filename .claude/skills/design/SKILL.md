@@ -65,9 +65,20 @@ description: 마이펫랩 mypetlab.kr 디자인 규칙(색상·폰트·컴포넌
 → .result(result-head(제목+stamp) → result-body(.r-line → .r-total(.stage)) → .r-note)
 → .tip(선택) → section(안내·표) → section(FAQ, JSON-LD FAQPage와 일치) → .rel-card 2개 → footer
 ```
-- head: charset, viewport, title(" | 마이펫랩"), description, og 3종, **og:url·og:image(/og.png 1200×630)·og:site_name·twitter:card·canonical**, Google Fonts, JSON-LD, **BreadcrumbList(홈 › 계산기명)**, **WebApplication(name·url·applicationCategory=LifestyleApplication·isAccessibleForFree·offers 0원·dateModified)**, **GA4 스니펫(G-K3SMLQRKGM) `</head>` 직전** — `age/index.html`에서 복사. (AdSense 스크립트는 승인 후 추가 예정)
+- head: charset, viewport, title(" | 마이펫랩"), description, og 3종, **og:url·og:image(/og.png 1200×630)·og:site_name·twitter:card·canonical**, Google Fonts, JSON-LD, **BreadcrumbList(홈 › 계산기명)**, **WebApplication(name·url·applicationCategory=LifestyleApplication·isAccessibleForFree·offers 0원·dateModified)**, **GA4 스니펫(G-K3SMLQRKGM, 자동화·`?ga=off` 제외 가드 포함) `</head>` 직전** — `age/index.html`에서 복사. (AdSense 스크립트는 승인 후 추가 예정)
 - GA 이벤트: 첫 입력 `calc_use{tool,species}`, 동물 전환 `calc_species` — `typeof gtag==='function'` 가드. **체중·나이 값은 담지 않는다**
 - 쿠파스·쉐어링크 링크가 들어가는 페이지는 제휴 고지 문구 필수(privacy 6항과 일치). 링크 클릭은 GA 스니펫이 `affiliate_click`으로 자동 추적
+
+## 7-2. 광고 배치 시 필수 확인 (8/22 추가)
+
+**광고는 "조용히 안 뜨는" 것이 기본값이다.** 광고 태그 자체에 `display:none`이 들어 있어서, 반응형으로 PC/모바일을 나눌 때 base 클래스를 빠뜨리면 한쪽에서만 영구히 숨겨진다. (실제 사례: 계산기 사이트가 모바일 광고만 안 뜨는 상태로 **21곳 동일 실수**를 방치)
+
+광고를 넣거나 고친 뒤 배포하면 반드시:
+1. **375px 폭**에서 광고 컨테이너의 `offsetHeight > 0` 인지 확인
+2. **1280px 폭**에서도 동일 확인
+3. 광고를 넣은 **모든 페이지를 전수 확인**
+4. 콘솔에 `adsbygoogle` 관련 오류가 없는지 확인
+5. 제휴 링크가 함께 있는 페이지는 제휴 고지 문구도 같이 확인
 
 ## 8. 금지
 - 차가운 파랑·보라 계열, 그라데이션, 네온, 유리 효과, 파스텔 무지개 카드
