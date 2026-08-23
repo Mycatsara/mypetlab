@@ -58,6 +58,7 @@ description: 마이펫랩 mypetlab.kr 디자인 규칙(색상·폰트·컴포넌
 | `.filter` 글 검색·태그 칩 (가이드 목록) | `.search input`(Noto 14.5px, 1.5px `--line`, radius 10px, focus 주황) + `.chip`(pill, `.on`은 주황 테두리+#FDF1E8 배경+`--orange-deep` 글자) + `.count` + `.no-result` |
 
 그림자는 세 가지(`0 1px 3px` / `0 3px 12px` / `0 6px 20px`)만. 모서리 4 / 9 / 10 / 12 / 14 / 16 / 999px만. transition `.15s`만.
+| `.back` 돌아가기 링크 | 글 하단(면책 뒤)·가이드 목록 하단에 한 개. `margin-top:28px`, 13px/700, `--orange-deep`, hover 시 밑줄. 글 → "← 가이드 목록으로", 가이드 목록 → "← 계산기 홈으로 돌아가기". taxtool과 위치·크기를 맞춘 요소이므로 임의로 빼지 않는다 |
 
 ## 6. 이모지 규칙 (taxtool과 다름)
 이 사이트는 **이모지를 "아이콘"으로 제한적으로 허용**한다: 홈 `.tool-card .emoji`, 계산기 탭 라벨(🐱 고양이 / 🐶 강아지), 워터마크 `.paw`. **그 외 본문·제목·글 안에는 금지.** 새 계산기도 탭에 동물 이모지 1개까지만.
