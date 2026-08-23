@@ -111,6 +111,17 @@
   footer .disclaimer{max-width:460px;margin:0 auto 8px}
   footer a{color:#A29883}
   .pubdate{margin-top:6px;font-size:12.5px;color:#A29883}
+
+  /* 글 목록(번호형) — 홈·글 하단 공용 */
+  .post-list{list-style:none;margin:14px 0 0;padding:0;border-top:1px solid var(--line)}
+  .post-list li{border-bottom:1px solid var(--line)}
+  .post-list a{display:flex;align-items:baseline;gap:10px;padding:12px 2px;text-decoration:none}
+  .post-list .n{flex:none;font-size:12.5px;font-weight:700;color:#A29883}
+  .post-list .t{flex:1;font-size:14.5px;font-weight:700;color:var(--ink);line-height:1.45}
+  .post-list a:hover .t{color:var(--orange)}
+  .post-list .g{flex:none;color:var(--orange);font-weight:700;font-size:14px}
+  .next-read{margin-top:34px}
+  .next-read h2{font-size:15px;font-weight:900;letter-spacing:-0.3px;margin:0}
 </style>
 <!-- Google Analytics 4 -->
 <script>
@@ -125,7 +136,7 @@
   s.src='https://www.googletagmanager.com/gtag/js?id=G-K3SMLQRKGM'; document.head.appendChild(s);
   window.dataLayer=window.dataLayer||[]; window.gtag=function(){dataLayer.push(arguments);};
   gtag('js',new Date()); gtag('config','G-K3SMLQRKGM');
-  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';var t=(a.textContent||'').trim().slice(0,60);if(/coupang\.com|link\.coupang|toss/.test(h)){gtag('event','affiliate_click',{link_url:h,link_text:t,page_path:location.pathname});return;}if(a.closest('.cta,.rel-card,.post-card,.card')){gtag('event','internal_link',{link_url:h,link_text:t,page_path:location.pathname});}});
+  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';var t=(a.textContent||'').trim().slice(0,60);if(/coupang\.com|link\.coupang|toss/.test(h)){gtag('event','affiliate_click',{link_url:h,link_text:t,page_path:location.pathname});return;}if(a.closest('.cta,.rel-card,.post-card,.post-list,.card')){gtag('event','internal_link',{link_url:h,link_text:t,page_path:location.pathname});}});
 })();
 </script>
 <script type="application/ld+json">
@@ -191,22 +202,21 @@
       </ul>
     </div>
 
+    <!-- AUTO:NEXT:START -->
+    <div class="next-read">
+      <h2>이어서 읽으면 좋은 글</h2>
+      <ol class="post-list">
+        <li><a href="/guide/to.html"><span class="n">01</span><span class="t">고양이 구토, 헤어볼일까 병원 갈 일일까</span><span class="g">→</span></a></li>
+        <li><a href="/guide/mul.html"><span class="n">02</span><span class="t">고양이가 물을 안 마셔요 — 음수량 늘리는 법 7가지</span><span class="g">→</span></a></li>
+        <li><a href="/guide/scratcher.html"><span class="n">03</span><span class="t">고양이 스크래쳐 고르는 법 — 4가지 기준</span><span class="g">→</span></a></li>
+      </ol>
+    </div>
+<!-- AUTO:NEXT:END -->
+
     <div class="cta">우리 아이가 지금 어느 생애 단계인지부터 확인하고 싶다면 <a href="/age/">나이 계산기</a>에 나이를 넣어보세요.</div>
 
     <p class="footnote">※ 본 글은 일반적인 정보를 정리한 참고용 콘텐츠이며 수의학적 진단을 대신할 수 없습니다. 평소와 다른 무기력이 이어지면 수의사와 상담하세요.</p>
   </article>
-
-  <div class="related">
-    <h2>함께 보면 좋아요</h2>
-    <a class="rel-card" href="/guide/nomyo.html">
-      <span class="txt"><span class="tag">노령묘</span><br><span class="t">노령묘 케어 가이드 — 몇 살부터, 뭐가 달라질까</span></span>
-      <span class="arr">→</span>
-    </a>
-    <a class="rel-card" href="/age/">
-      <span class="txt"><span class="tag">계산기</span><br><span class="t">강아지·고양이 나이 계산기 — 사람 나이로 몇 살?</span></span>
-      <span class="arr">→</span>
-    </a>
-  </div>
 
   <footer>
     <p class="disclaimer">본 사이트의 콘텐츠는 참고용이며, 반려동물의 건강에 관한 결정은 수의사와 상담하세요.</p>

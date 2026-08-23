@@ -53,6 +53,9 @@ description: 마이펫랩 mypetlab.kr 디자인 규칙(색상·폰트·컴포넌
 | `.footnote` | 13px #A29883 |
 | `.pubdate` 게시일 | 글 헤더 `.meta` 바로 아래, `margin-top:6px;font-size:12.5px;color:#A29883` |
 | `footer` | 12px #A29883 중앙, `.disclaimer`(수의사 상담 문구) → "마이펫랩 mypetlab.kr · 우리 아이 돌봄 계산기" → 가이드·사이트 소개·개인정보처리방침 |
+| `.post-list` 번호형 글 목록 | 홈·글 하단 공용. `<ol>`, 1px `--line` 구분선, 행 padding 12px 2px, `.n`(**Noto 12.5px/700** #A29883 — 글 페이지는 Plex Mono를 불러오지 않는다) · `.t`(14.5px/700) · `.g`(주황 화살표) |
+| `.next-read` 글 하단 관련 글 | `margin-top:34px`, h2 15px/900. **위치는 정리 박스 뒤 · CTA 앞.** 예전 `</article>` 뒤의 "함께 보면 좋아요"는 CTA보다 늦어 이탈을 못 막았으므로 제거했다. 내용은 `tools/buildlist.js`가 생성 |
+| `.filter` 글 검색·태그 칩 (가이드 목록) | `.search input`(Noto 14.5px, 1.5px `--line`, radius 10px, focus 주황) + `.chip`(pill, `.on`은 주황 테두리+#FDF1E8 배경+`--orange-deep` 글자) + `.count` + `.no-result` |
 
 그림자는 세 가지(`0 1px 3px` / `0 3px 12px` / `0 6px 20px`)만. 모서리 4 / 9 / 10 / 12 / 14 / 16 / 999px만. transition `.15s`만.
 

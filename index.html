@@ -109,6 +109,15 @@
   footer .footer-links{margin-top:10px}
   footer .footer-links a{color:#A29883;text-decoration:underline;margin:0 6px}
   footer .footer-links a:hover{color:var(--sub)}
+
+  /* 글 목록(번호형) — 홈·글 하단 공용 */
+  .post-list{list-style:none;margin:14px 0 0;padding:0;border-top:1px solid var(--line)}
+  .post-list li{border-bottom:1px solid var(--line)}
+  .post-list a{display:flex;align-items:baseline;gap:10px;padding:12px 2px;text-decoration:none}
+  .post-list .n{flex:none;font-size:12.5px;font-weight:700;color:#A29883}
+  .post-list .t{flex:1;font-size:14.5px;font-weight:700;color:var(--ink);line-height:1.45}
+  .post-list a:hover .t{color:var(--orange)}
+  .post-list .g{flex:none;color:var(--orange);font-weight:700;font-size:14px}
 </style>
 <!-- Google Analytics 4 -->
 <script>
@@ -123,7 +132,7 @@
   s.src='https://www.googletagmanager.com/gtag/js?id=G-K3SMLQRKGM'; document.head.appendChild(s);
   window.dataLayer=window.dataLayer||[]; window.gtag=function(){dataLayer.push(arguments);};
   gtag('js',new Date()); gtag('config','G-K3SMLQRKGM');
-  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';var t=(a.textContent||'').trim().slice(0,60);if(/coupang\.com|link\.coupang|toss/.test(h)){gtag('event','affiliate_click',{link_url:h,link_text:t,page_path:location.pathname});return;}if(a.closest('.cta,.rel-card,.post-card,.card')){gtag('event','internal_link',{link_url:h,link_text:t,page_path:location.pathname});}});
+  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';var t=(a.textContent||'').trim().slice(0,60);if(/coupang\.com|link\.coupang|toss/.test(h)){gtag('event','affiliate_click',{link_url:h,link_text:t,page_path:location.pathname});return;}if(a.closest('.cta,.rel-card,.post-card,.post-list,.card')){gtag('event','internal_link',{link_url:h,link_text:t,page_path:location.pathname});}});
 })();
 </script>
 </head>
@@ -161,33 +170,16 @@
 
   <section>
     <h2>읽어볼 만한 글</h2>
-    <div class="related">
-      <a class="rel-card" href="/guide/scratcher.html">
-        <span class="txt"><span class="tag">용품</span><br><span class="t">고양이 스크래쳐 고르는 법 — 4가지 기준</span></span>
-        <span class="arr">→</span>
-      </a>
-      <a class="rel-card" href="/guide/to.html">
-        <span class="txt"><span class="tag">행동·건강</span><br><span class="t">고양이 구토, 헤어볼일까 병원 갈 일일까</span></span>
-        <span class="arr">→</span>
-      </a>
-      <a class="rel-card" href="/guide/saryo.html">
-        <span class="txt"><span class="tag">사료</span><br><span class="t">고양이 사료 고르는 법 — 성분표에서 꼭 봐야 할 5가지</span></span>
-        <span class="arr">→</span>
-      </a>
-      <a class="rel-card" href="/guide/jam.html">
-        <span class="txt"><span class="tag">행동·건강</span><br><span class="t">고양이가 잠을 너무 많이 자요 — 정상일까</span></span>
-        <span class="arr">→</span>
-      </a>
-      <a class="rel-card" href="/guide/mul.html">
-        <span class="txt"><span class="tag">음수량</span><br><span class="t">고양이가 물을 안 마셔요 — 음수량 늘리는 방법 7가지</span></span>
-        <span class="arr">→</span>
-      </a>
-      <a class="rel-card" href="/guide/seupsik.html">
-        <span class="txt"><span class="tag">사료</span><br><span class="t">고양이 습식 vs 건식 사료 — 어떻게 섞어 먹일까</span></span>
-        <span class="arr">→</span>
-      </a>
-    </div>
-    <a class="rel-more" href="/guide/">가이드 전체 보기 →</a>
+    <!-- AUTO:HOME:START -->
+      <ol class="post-list">
+        <li><a href="/guide/scratcher.html"><span class="n">01</span><span class="t">고양이 스크래쳐 고르는 법 — 4가지 기준</span><span class="g">→</span></a></li>
+        <li><a href="/guide/to.html"><span class="n">02</span><span class="t">고양이 구토, 헤어볼일까 병원 갈 일일까</span><span class="g">→</span></a></li>
+        <li><a href="/guide/saryo.html"><span class="n">03</span><span class="t">고양이 사료 고르는 법 — 성분표에서 봐야 할 5가지</span><span class="g">→</span></a></li>
+        <li><a href="/guide/jam.html"><span class="n">04</span><span class="t">고양이가 잠을 너무 많이 자요 — 정상일까</span><span class="g">→</span></a></li>
+        <li><a href="/guide/mul.html"><span class="n">05</span><span class="t">고양이가 물을 안 마셔요 — 음수량 늘리는 법 7가지</span><span class="g">→</span></a></li>
+      </ol>
+      <a class="rel-more" href="/guide/">가이드 전체 8편 보기 →</a>
+<!-- AUTO:HOME:END -->
   </section>
 
   <section>
