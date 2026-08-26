@@ -40,6 +40,7 @@ git log --since=midnight --diff-filter=A --name-only --pretty=format: -- guide/ 
 
 - head: title, meta description, og 3종(og:type=article), Google Fonts, JSON-LD Article (mainEntityOfPage는 `https://mypetlab.kr/guide/<슬러그>.html`, datePublished는 게시일)
 - head 끝(`</head>` 직전): **Google Analytics 4 스니펫(측정 ID G-K3SMLQRKGM)** — 최근 글 페이지의 것을 그대로 복사. 빠지면 안 됨
+- `<meta charset>` 바로 아래: **애드센스 확인 스크립트(ca-pub-4428587485814712)** — 8/27 심사 신청부터 전 페이지 필수. 최근 글 페이지에서 그대로 복사
 - head 공유·검색 태그(8/22~ 필수): `og:url`(페이지 절대 URL) · `og:image`=`https://mypetlab.kr/og.png` + width 1200/height 630 · `og:site_name`=마이펫랩 · `twitter:card=summary_large_image` · `<link rel="canonical">` — 최근 글 페이지에서 복사하고 URL만 교체. 그리고 `</head>` 직전에 **BreadcrumbList JSON-LD**(홈 › 가이드 › 짧은 주제명, item은 절대 URL). `html{}`에 `-webkit-text-size-adjust:100%` 유지
 - **날짜(GEO·최신성 신호)**: Article JSON-LD에 `datePublished`(게시일)와 `dateModified`를 **둘 다** 넣는다. 신규 글은 두 값이 같다. 헤더 `.meta` 바로 아래에 `<p class="pubdate">YYYY년 M월 D일 게시</p>` 표시. **기존 글의 세율·법령·수치를 고치면 `dateModified`와 화면 문구를 그날 날짜로 갱신**하고 문구는 `~ 게시 · YYYY년 M월 D일 수정`으로 바꾼다. 오탈자·디자인 수정만 한 경우에는 갱신하지 않는다
 - 본문: crumb(홈/가이드/짧은 주제명) → eyebrow(주제 태그) → h1 → .meta 한 줄 소개 → article
