@@ -52,7 +52,8 @@ git log --since=midnight --diff-filter=A --name-only --pretty=format: -- guide/ 
   - **파일은 300KB 이하 webp, 폭 1200px** — 생성 원본(PNG 1.5MB)은 반드시 `Documents`에서 `node tools/imgopt.js 원본.png --out mypetlab/img/슬러그-용도.webp`로 압축한 것만 올린다. 파일명은 `슬러그-용도.webp`(예: dubu-hero, dubu-mix)
   - 마이펫랩 이미지는 **일러스트 풍만** 쓴다(실사 사진으로 "우리 집 고양이"처럼 보이게 하지 않는다). 글마다 1~3장, 히어로 1장은 .lead 문단 바로 아래
   - CSS는 최근 글에서 `.fig` 블록을 복사: `article .fig{margin:22px 0}` `article .fig img{display:block;width:100%;height:auto;border-radius:12px}`
-  - 생성은 `Documents`에서 `node tools/genimg.js "프롬프트" --ratio 16:9 --out 원고대기/사진/슬러그-용도.png` (월 30장 상한, 장부 `tools/genimg-usage.json`)
+  - 생성은 `Documents`에서 `node tools/genimg.js "프롬프트" --ratio 16:9 --out 원고대기/사진/슬러그-용도.png` (월 상한·장부 `tools/genimg-usage.json`)
+  - **프롬프트는 반드시 `Documents/기록/이미지생성_진행상황.md`의 "★ 프롬프트 규칙" 6개를 따른다** — 핵심: 사람은 상반신 이상 보이게(손만 금지) / 집사는 동화풍·이목구비 단순 / 서명·글자 없음 / 물건 목록 명시 / 소품 3개 이하. 생성 후 검수 3단계(시트·구석 확대·체크리스트) 통과 전 게시 금지
 - `## 정리` 섹션 → `.summary-box`
 - 마지막 행동 유도 문장 → `.cta` 박스 (링크 하나만)
 - `※` 면책 문구 → `.footnote`
