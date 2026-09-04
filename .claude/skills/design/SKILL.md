@@ -15,13 +15,13 @@ description: 마이펫랩 mypetlab.kr 디자인 규칙(색상·폰트·컴포넌
 --bg:#F7F2E9;        /* 페이지 배경: 따뜻한 크림 */
 --ink:#2B241C;       /* 본문 글자: 진한 갈색 먹색 */
 --paper:#FFFFFF;     /* 카드 */
---orange:#E07A3F;    /* 주색: 발바닥 주황 — 강조·링크·결과 박스·CTA·포커스 */
---orange-deep:#B85C28; /* 글 본문 링크 */
+--orange:#E07A3F;    /* 주색: 발바닥 주황 — 테두리·포커스 링·hover 등 비글자 용도만. 글자 색이나 흰 글자 밑 배경으로 쓰지 않는다(대비 2.7:1 미달) */
+--orange-deep:#A8521F; /* 글자로 쓰는 주황 전부: 본문 링크·태그·화살표·eyebrow·h1 강조·CTA와 결과 박스 배경. 2026-09-04 #B85C28→#A8521F (흰 글자·크림 배경 모두 AA 통과) */
 --green:#3E8E6D;     /* 보조: 건강 초록 (건강·정상 표시 정도로만) */
 --line:#E4DCCE;      /* 테두리·구분선 */
 --sub:#6E6455;       /* 보조 글자 */
 ```
-고정 보조색: 본문 회갈색 `#3E362B` / 태그·선택 chip 배경 `#FDF1E8` / 팁 박스 배경 `#FDF6EA` 테두리 `#F0DDBB` 글자 `#6B5320` / 결과 노트 배경 `#FDF9F2` / 표 머리 `#F3EDE1` / 푸터·crumb 글자 `#A29883` / 탭 트랙 `#EAE3D5` / 입력 배경 `#FBFAF7`.
+고정 보조색: 본문 회갈색 `#3E362B` / 태그·선택 chip 배경 `#FDF1E8` / 팁 박스 배경 `#FDF6EA` 테두리 `#F0DDBB` 글자 `#6B5320` / 결과 노트 배경 `#FDF9F2` / 표 머리 `#F3EDE1` / 푸터·crumb 글자 `#6E6455` / 탭 트랙 `#EAE3D5` / 입력 배경 `#FBFAF7`.
 
 ## 3. 타이포
 - Google Fonts: `Noto+Sans+KR:wght@400;500;700;900` + `IBM+Plex+Mono:wght@500;600`
@@ -50,10 +50,10 @@ description: 마이펫랩 mypetlab.kr 디자인 규칙(색상·폰트·컴포넌
 | `.tip` | #FDF6EA / #F0DDBB / #6B5320 radius 10px |
 | `.summary-box` (글) | paper, 1px line, **왼쪽 4px 주황 보더**, radius 10px |
 | `.cta` (글) | 주황 배경 흰 글자 radius 12px padding 20px, 링크 하나만, 밑줄 offset 3px |
-| `.footnote` | 13px #A29883 |
-| `.pubdate` 게시일 | 글 헤더 `.meta` 바로 아래, `margin-top:6px;font-size:12.5px;color:#A29883` |
-| `footer` | 12px #A29883 중앙, `.disclaimer`(수의사 상담 문구) → "마이펫랩 mypetlab.kr · 우리 아이 돌봄 계산기" → 가이드·사이트 소개·개인정보처리방침 |
-| `.post-list` 번호형 글 목록 | 홈·글 하단 공용. `<ol>`, 1px `--line` 구분선, 행 padding 12px 2px, `.n`(**Noto 12.5px/700** #A29883 — 글 페이지는 Plex Mono를 불러오지 않는다) · `.t`(14.5px/700) · `.g`(주황 화살표) |
+| `.footnote` | 13px #6E6455 |
+| `.pubdate` 게시일 | 글 헤더 `.meta` 바로 아래, `margin-top:6px;font-size:12.5px;color:#6E6455` |
+| `footer` | 12px #6E6455 중앙, `.disclaimer`(수의사 상담 문구) → "마이펫랩 mypetlab.kr · 우리 아이 돌봄 계산기" → 가이드·사이트 소개·개인정보처리방침 |
+| `.post-list` 번호형 글 목록 | 홈·글 하단 공용. `<ol>`, 1px `--line` 구분선, 행 padding 12px 2px, `.n`(**Noto 12.5px/700** #6E6455 — 글 페이지는 Plex Mono를 불러오지 않는다) · `.t`(14.5px/700) · `.g`(주황 화살표) |
 | `.next-read` 글 하단 관련 글 | `margin-top:34px`, h2 15px/900. **위치는 정리 박스 뒤 · CTA 앞.** 예전 `</article>` 뒤의 "함께 보면 좋아요"는 CTA보다 늦어 이탈을 못 막았으므로 제거했다. 내용은 `tools/buildlist.js`가 생성 |
 | `.filter` 글 검색·태그 칩 (가이드 목록) | `.search input`(Noto 14.5px, 1.5px `--line`, radius 10px, focus 주황) + `.chip`(pill, `.on`은 주황 테두리+#FDF1E8 배경+`--orange-deep` 글자) + `.count` + `.no-result` |
 
