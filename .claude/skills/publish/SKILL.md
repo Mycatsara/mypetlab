@@ -89,13 +89,13 @@ git log --since=midnight --diff-filter=A --name-only --pretty=format: -- guide/ 
 2. `node tools/indexnow.js https://mypetlab.kr/guide/새글.html` 실행, 응답 200/202면 접수
 3. dateModified를 올린 수정 글도 같은 방법으로 다시 보낸다
 4. 응답 의미: 400 형식 오류 · 403 키 불일치 · 422 키 파일이 루트가 아니거나 URL 호스트 다름 · 429 과다
-5. 구글은 IndexNow를 안 받는다 — 사이트맵 자연 색인이 기본, 빠른 색인이 필요하면 운영자 크롬(서치콘솔 로그인)에서 URL 검사 → 색인 생성 요청(하루 10건 안팎)
+5. **구글(9/5~ 클로드 담당)**: IndexNow를 안 받으므로, 운영자 크롬(서치콘솔 로그인 유지 — 9/5 운영자 지시)에서 클로드 인 크롬으로 서치콘솔 → mypetlab.kr 속성 → URL 검사창에 새 글 주소 입력 → "색인 생성 요청" 클릭 → 완료 문구 확인. 로그인·비밀번호 입력은 클로드가 하지 않는다. 한도는 하루 10건 안팎, 로그인이 풀려 있으면 운영자에게 요청
 
 ## 8단계: 마무리
 
 1. 원고 파일을 `원고대기\mypetlab` → `원고완료\mypetlab`로 이동
 2. `C:\Users\사라띠\Documents\CLAUDE.md`의 2호 사이트(마이펫랩) 현황 갱신
-3. 운영자에게 보고: 게시된 URL, GitHub Pages 반영 1~2분 소요 안내, IndexNow 응답 코드, **구글 색인 요청은 필요 시 운영자 크롬으로** 안내
+3. 운영자에게 보고: 게시된 URL, IndexNow 응답 코드, 구글 색인 요청 완료 여부
 
 ## 수익화 관련 (중요)
 
