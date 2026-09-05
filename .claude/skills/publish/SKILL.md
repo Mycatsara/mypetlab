@@ -82,9 +82,8 @@ git log --since=midnight --diff-filter=A --name-only --pretty=format: -- guide/ 
 
 - 한글 커밋 메시지 (예: `가이드 게시: 고양이 모래 종류 총정리 (목록·sitemap·홈 카드 반영)`)
 - **푸시까지 완료해야 실제 반영** — 커밋만 하고 끝내지 않는다
-- **IndexNow 알림(9/5~)**: 푸시 후 실사이트에서 새 글 URL이 **200을 돌려주는 것을 확인한 뒤** `node tools/indexnow.js https://mypetlab.kr/guide/<슬러그>.html` 실행. 응답 200/202면 네이버·빙 접수. 403은 키 불일치, 422는 키 파일 위치·호스트 문제. 결과 코드를 보고에 남긴다. dateModified를 올린 수정 글도 같은 방법으로 다시 보낸다. 구글은 API가 없어 별도(서치콘솔 색인 요청)
 
-## 7단계: 색인 알림 (IndexNow — 네이버·빙 자동)
+## 7단계: 색인 알림 (IndexNow — 네이버·빙 자동, 9/5~)
 
 1. 실사이트에서 새 글 URL이 **200을 돌려주는지 먼저 확인**한다(반영 전에 보내면 엔진이 404를 받고 무시). 폴링 금지, 1~2분 뒤 1회 확인
 2. `node tools/indexnow.js https://mypetlab.kr/guide/새글.html` 실행, 응답 200/202면 접수
