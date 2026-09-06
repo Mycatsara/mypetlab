@@ -5,7 +5,7 @@
 const fs = require('fs');
 const path = require('path');
 const ROOT = path.join(__dirname, '..');
-const CSSV = '20260906'; // buildlist.js CFG.cssVersion 과 맞춘다
+const CSSV = '20260906b'; // buildlist.js CFG.cssVersion 과 맞춘다
 
 const HEAD = `<header class="site"><div class="in">
   <a class="title" href="/">마이펫랩</a>

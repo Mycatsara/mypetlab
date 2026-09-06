@@ -20,7 +20,7 @@ const CFG = {
   nextHeading: '이어서 읽으면 좋은 글',
   moreText: (n) => `가이드 전체 ${n}편 보기 →`,
   countText: (n) => `전체 ${n}편`,
-  cssVersion: '20260906',           // site.css 캐시 버전 — site.css를 고치면 올린다
+  cssVersion: '20260906b',           // site.css 캐시 버전 — site.css를 고치면 올린다
 };
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
