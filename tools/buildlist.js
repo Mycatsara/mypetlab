@@ -3,7 +3,7 @@
 //   2) index.html(홈)    : 최신 N편 썸네일 카드 (AUTO:HOME)
 //   3) guide/<글>.html   : 글 하단 "이어서 읽으면 좋은 글" 3편 (CTA 앞)
 //   4) guide/<cat>/index.html : 카테고리 페이지 — tools/tpl-category.html에서 생성 (없으면 만들고, 있으면 AUTO 구간만 갱신)
-//   5) 모든 페이지      : <!-- AUTO:NAV --> 상단 메뉴, <!-- AUTO:CALCS --> 모바일 계산기 줄, <!-- AUTO:SIDE --> 사이드바(계산기·검색·카테고리·최근 글)
+//   5) 모든 페이지      : <!-- AUTO:NAV --> 상단 메뉴, <!-- AUTO:CALCS --> 모바일 계산기 줄, <!-- AUTO:SIDE --> 사이드바(계산기·카테고리·검색·최근 글)
 //   6) llms.txt          : 카테고리·글 목록 (AUTO:LLMS)
 // 사용: node tools/buildlist.js
 // 규칙: 자동 생성 구간은 <!-- AUTO:XXX:START --> ~ <!-- AUTO:XXX:END --> 사이만 바뀐다. 그 밖은 손대지 않는다.
@@ -96,7 +96,7 @@ function navHtml(cur) {
 function stripHtml(cur) {
   return calcs.map((c) => `    <a href="${c.path}"${c.path === cur ? ' aria-current="page"' : ''}><span class="emoji">${c.emoji}</span><span class="nm">${esc(c.name)}</span></a>`).join('\n');
 }
-// 사이드바: 계산기 → 검색 → 카테고리 → 최근 글(썸네일)
+// 사이드바: 계산기 → 카테고리 → 검색 → 최근 글(2026-09-06 운영자 결정, 눈치와 동일 순서)(썸네일)
 function sideHtml(cur) {
   const cs = calcs.map((c) => `      <a class="side-calc" href="${c.path}"${c.path === cur ? ' aria-current="page"' : ''}><span class="emoji">${c.emoji}</span><span class="txt"><span class="nm">${esc(c.name)}</span><span class="ds">${esc(c.desc)}</span></span><span class="arr">→</span></a>`).join('\n');
   const ct = cats.map((c) => `      <a class="side-cat" href="/guide/${c.slug}/"${`/guide/${c.slug}/` === cur ? ' aria-current="page"' : ''}>${esc(c.name)} <span>(${countOf(c)})</span></a>`).join('\n');
@@ -107,8 +107,8 @@ function sideHtml(cur) {
   }).join('\n');
   return [
     `    <div class="side-box calcs">\n      <h2>계산기</h2>\n${cs}\n    </div>`,
-    `    <div class="side-box">\n      <h2>검색</h2>\n      <form class="side-search" action="/guide/" method="get" role="search"><input type="search" name="q" placeholder="찾는 말 (예: 사료, 노령묘)" aria-label="글 검색" autocomplete="off"><button type="submit">찾기</button></form>\n    </div>`,
     `    <div class="side-box">\n      <h2>카테고리</h2>\n${ct}\n    </div>`,
+    `    <div class="side-box">\n      <h2>검색</h2>\n      <form class="side-search" action="/guide/" method="get" role="search"><input type="search" name="q" placeholder="찾는 말 (예: 사료, 노령묘)" aria-label="글 검색" autocomplete="off"><button type="submit">찾기</button></form>\n    </div>`,
     `    <div class="side-box">\n      <h2>최근 글</h2>\n${rs}\n    </div>`,
   ].join('\n');
 }

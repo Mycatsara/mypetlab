@@ -47,7 +47,7 @@
 @media (min-width:900px){
   .layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:28px;align-items:start;padding:0 20px}
   .main>.wrap{margin:0;padding-left:0;padding-right:0}
-  .side{display:block;position:sticky;top:20px;padding:32px 0 40px}
+  .side{display:block;padding:32px 0 40px}
 }
 body>footer{max-width:1040px;margin-left:auto;margin-right:auto;padding:0 20px 60px}
 
