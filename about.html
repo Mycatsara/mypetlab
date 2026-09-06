@@ -55,7 +55,29 @@
   footer .footer-links{margin-top:10px}
   footer .footer-links a{color:#6E6455;text-decoration:underline;margin:0 6px}
   footer .footer-links a:hover{color:var(--sub)}
+  details{
+    background:var(--paper);border:1px solid var(--line);
+    border-radius:10px;margin-bottom:8px;
+  }
+  summary{
+    padding:14px 16px;font-size:14.5px;font-weight:700;cursor:pointer;
+    list-style:none;display:flex;justify-content:space-between;align-items:center;
+  }
+  summary::after{content:"+";font-weight:400;color:var(--sub);font-size:18px}
+  details[open] summary::after{content:"–"}
+  details .a{padding:0 16px 14px;font-size:14px;color:#3E362B}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "계산 결과는 어떤 기준으로 나오나요?", "acceptedAnswer": {"@type": "Answer", "text": "나이 환산은 수의학계에서 널리 쓰이는 환산표(첫해 15살, 둘째 해 9살, 이후 크기별 가산)를, 사료 급여량은 휴지기 에너지 요구량(RER) 공식을 기반으로 합니다. 각 계산기 페이지 하단에 기준을 자세히 적어 두었습니다."}},
+    {"@type": "Question", "name": "결과를 그대로 따라도 되나요?", "acceptedAnswer": {"@type": "Answer", "text": "계산기는 참고용 가이드입니다. 아이마다 체질·활동량·건강 상태가 달라서, 실제 급여량이나 건강 관리는 사료 포장지의 권장표와 수의사 상담을 우선하세요."}},
+    {"@type": "Question", "name": "다른 계산기도 추가되나요?", "acceptedAnswer": {"@type": "Answer", "text": "네. 예방접종 일정, 먹어도 되는 음식 사전 등 집사·견주에게 필요한 것들을 계속 추가할 예정입니다."}}
+  ]
+}
+</script>
 <!-- Google Analytics 4 -->
 <script>
 (function(){
@@ -143,6 +165,22 @@
         <li><b>가이드 글</b> — 12살 노령묘를 키우는 집사가 직접 겪은 것과 수의학 자료를 바탕으로 쓰되, 진단이나 처방을 대신하지 않습니다. 건강 이상이 의심되면 수의사와 상담하세요.</li>
       </ul>
     </div>
+  </section>
+
+  <section>
+    <h2>자주 묻는 질문</h2>
+    <details>
+      <summary>계산 결과는 어떤 기준으로 나오나요?</summary>
+      <div class="a">나이 환산은 수의학계에서 널리 쓰이는 환산표(첫해 15살, 둘째 해 9살, 이후 크기별 가산)를, 사료 급여량은 휴지기 에너지 요구량(RER) 공식을 기반으로 합니다. 각 계산기 페이지 하단에 기준을 자세히 적어 두었습니다.</div>
+    </details>
+    <details>
+      <summary>결과를 그대로 따라도 되나요?</summary>
+      <div class="a">계산기는 참고용 가이드입니다. 아이마다 체질·활동량·건강 상태가 달라서, 실제 급여량이나 건강 관리는 사료 포장지의 권장표와 수의사 상담을 우선하세요.</div>
+    </details>
+    <details>
+      <summary>다른 계산기도 추가되나요?</summary>
+      <div class="a">네. 예방접종 일정, 먹어도 되는 음식 사전 등 집사·견주에게 필요한 것들을 계속 추가할 예정입니다.</div>
+    </details>
   </section>
 
   <section>
