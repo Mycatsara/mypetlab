@@ -81,6 +81,19 @@ body>footer{max-width:1040px;margin-left:auto;margin-right:auto;padding:0 20px 6
 /* ---------- 글 카드 격자(홈·가이드 전체·카테고리) ---------- */
 .list.grid{display:grid;grid-template-columns:1fr;gap:14px}
 @media (min-width:600px){.list.grid{grid-template-columns:1fr 1fr}}
+/* 제목 목록(사진 카드 아래 나머지 글) · 페이지 번호 — 9/6 운영자 결정, 기록/홈목록화면_적용안내.md */
+.post-list{list-style:none;margin:14px 0 0;padding:0;border-top:1px solid var(--line)}
+.post-list li{border-bottom:1px solid var(--line)}
+.post-list a{display:flex;align-items:baseline;gap:10px;padding:12px 2px;text-decoration:none}
+.post-list .t{flex:1;font-size:14.5px;font-weight:700;color:var(--ink);line-height:1.45}
+.post-list a:hover .t{color:var(--orange-deep)}
+.post-list .g{flex:none;color:var(--orange);font-weight:700;font-size:14px}
+.post-list.archive{margin-top:18px}
+.post-list .d{flex:none;font-size:12px;color:var(--sub);font-family:'IBM Plex Mono',monospace}
+.pager{display:flex;justify-content:center;gap:6px;margin-top:22px}
+.pager a,.pager .cur{min-width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;border-radius:10px;font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:600;text-decoration:none;color:var(--ink);border:1.5px solid var(--line);background:var(--paper)}
+.pager a:hover{border-color:var(--orange);color:var(--orange-deep)}
+.pager .cur{background:var(--ink);border-color:var(--ink);color:#fff}
 .post-card.thumb{display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:0;overflow:hidden;text-decoration:none;color:var(--ink);transition:border-color .15s}
 .post-card.thumb:hover{border-color:var(--orange)}
 .post-card.thumb img,.post-card.thumb .ph{display:block;width:100%;height:auto;aspect-ratio:1200/686;object-fit:cover;background:#EAE3D5;border-bottom:1px solid var(--line)}

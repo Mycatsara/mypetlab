@@ -1,6 +1,6 @@
 // 글 목록 자동 생성 — tools/posts.json 하나만 고치면 아래가 한 번에 갱신된다.
 //   1) guide/index.html : 카테고리 칩(링크) + 전체 편수 + 글 카드 목록(2열 격자)
-//   2) index.html(홈)    : 최신 N편 썸네일 카드 (AUTO:HOME)
+//   2) index.html(홈)    : 사진 카드 cardMax편 + 나머지 제목 목록 (AUTO:HOME)
 //   3) guide/<글>.html   : 글 하단 "이어서 읽으면 좋은 글" 3편 (CTA 앞)
 //   4) guide/<cat>/index.html : 카테고리 페이지 — tools/tpl-category.html에서 생성 (없으면 만들고, 있으면 AUTO 구간만 갱신)
 //   5) 모든 페이지      : <!-- AUTO:NAV --> 상단 메뉴, <!-- AUTO:CALCS --> 모바일 계산기 줄, <!-- AUTO:SIDE --> 사이드바(계산기·카테고리·검색·최근 글)
@@ -14,12 +14,13 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..');
 
 const CFG = {
-  homeMax: 6,                       // 홈에 노출할 글 수 (2열 카드 × 3행, 운영자 결정 8/23)
+  cardMax: 4,                       // 홈·목록·카테고리에서 사진 카드로 보일 글 수(나머지는 제목 목록). posts.json의 cardMax가 있으면 그 값 (9/6 운영자 결정)
+  pageSize: 10,                     // 제목 목록 한 페이지 편수 — 넘으면 site.js가 1·2·3 번호를 만든다. posts.json의 pageSize가 있으면 그 값
   recentMax: 4,                     // 사이드바 최근 글 수
   nextMax: 3,                       // 글 하단 관련 글 수
   nextHeading: '이어서 읽으면 좋은 글',
   countText: (n) => `전체 ${n}편`,
-  cssVersion: '20260906b',           // site.css 캐시 버전 — site.css를 고치면 올린다
+  cssVersion: '20260906c',           // site.css 캐시 버전 — site.css를 고치면 올린다
 };
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -86,6 +87,20 @@ ${pic}
       </a>`;
 };
 
+// 목록 블록: 앞 N편은 사진 카드(2열), 나머지는 제목·날짜 목록 — 번호 없음 (9/6 운영자 결정, 기록/홈목록화면_적용안내.md)
+// 순서는 posts.json 순서 = 최신이 위, 오래된 글이 아래. 홈(short=true)은 카드에 짧은 제목
+const listItemDated = (p) => {
+  const c = catOf(p);
+  return `        <li data-cat="${c.slug}" data-text="${esc((p.title + ' ' + p.summary + ' ' + c.name).replace(/\s+/g, ' '))}"><a href="/guide/${p.slug}.html"><span class="t">${esc(p.title)}</span><span class="d">${dateKo(p.date)}</span><span class="g">→</span></a></li>`;
+};
+function listBlock(list, short) {
+  const n = data.cardMax || CFG.cardMax;
+  const cards = list.slice(0, n).map((p) => gridCard(p, short)).join('\n');
+  const rest = list.slice(n);
+  const ol = rest.length ? `\n      <ol class="post-list archive" data-page-size="${data.pageSize || CFG.pageSize}">\n${rest.map(listItemDated).join('\n')}\n      </ol>` : '';
+  return `      <div class="list grid">\n${cards}\n      </div>${ol}`;
+}
+
 // 상단 메뉴: 홈 · 계산기 2개 · 카테고리 4개 · 소개 (운영자 결정 9/6 — 계산기는 눈에 잘 보이게 메뉴에 둔다)
 function navHtml(cur) {
   const items = [['/', '홈'], ...calcs.map((c) => [c.path, c.label]), ...cats.map((c) => [`/guide/${c.slug}/`, c.name]), ['/about.html', '소개']];
@@ -132,13 +147,10 @@ let changed = 0;
 // ---------- 1) 가이드 전체 목록 ----------
 if (fill('guide/index.html', 'CHIPS', chipsHtml('/guide/'))) changed++;
 if (fill('guide/index.html', 'COUNT', `  <p class="count" id="count">${CFG.countText(posts.length)}</p>`)) changed++;
-if (fill('guide/index.html', 'LIST', posts.map((p) => gridCard(p, false)).join('\n'))) changed++;
+if (fill('guide/index.html', 'LIST', listBlock(posts, false))) changed++;
 
 // ---------- 2) 홈 ----------
-const home = `      <div class="list grid">
-${posts.slice(0, CFG.homeMax).map((p) => gridCard(p, true)).join('\n')}
-      </div>`;
-if (fill('index.html', 'HOME', home)) changed++;
+if (fill('index.html', 'HOME', listBlock(posts, true))) changed++;
 
 // ---------- 3) 각 글의 관련 글 ----------
 for (const p of posts) {
@@ -166,7 +178,7 @@ for (const c of cats) {
     if (next !== s) { write(f, next); changed++; }
   }
   if (fill(f, 'CHIPS', chipsHtml(`/guide/${c.slug}/`))) changed++;
-  if (fill(f, 'LIST', posts.filter((p) => p.cat === c.slug).map((p) => gridCard(p, false)).join('\n'))) changed++;
+  if (fill(f, 'LIST', listBlock(posts.filter((p) => p.cat === c.slug), false))) changed++;
 }
 
 // ---------- 5) 모든 페이지: 상단 메뉴 + 계산기 줄 + 사이드바 ----------
