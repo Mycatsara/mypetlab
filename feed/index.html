@@ -32,6 +32,7 @@
   ]
 }
 </script>
+<link rel="stylesheet" href="/site.css?v=20260906">
 <style>
   :root{
     --bg:#F7F2E9;
@@ -182,20 +183,6 @@
   footer .footer-links{margin-top:10px}
   footer .footer-links a{color:#6E6455;text-decoration:underline;margin:0 6px}
   footer .footer-links a:hover{color:var(--sub)}
-  /* 상단 머리(로고·메뉴) — 홈·가이드·계산기·소개 공용. 원본: tools/sitehead.js */
-  .site{border-bottom:1.5px solid var(--orange);margin-bottom:26px}
-  .site .title{display:inline-flex;align-items:center;gap:6px;font-size:30px;font-weight:900;letter-spacing:-1px;line-height:1.2;color:var(--ink);text-decoration:none}
-  .site .title::after{content:"";display:inline-block;width:30px;height:28px;margin-bottom:-3px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 38'%3E%3Cg fill='%23E07A3F'%3E%3Ccircle cx='9' cy='15' r='4.4'/%3E%3Ccircle cx='17' cy='8' r='4.4'/%3E%3Ccircle cx='26' cy='8' r='4.4'/%3E%3Ccircle cx='33' cy='15' r='4.4'/%3E%3Cellipse cx='21' cy='27' rx='10.5' ry='8.5'/%3E%3C/g%3E%3C/svg%3E") no-repeat center/contain}
-  .site .desc{font-size:13px;color:var(--sub);margin-top:2px}
-  .site nav.menu{display:flex;flex-wrap:wrap;margin-top:6px}
-  .site nav.menu a{color:var(--ink);font-size:14.5px;font-weight:700;line-height:46px;padding:0 13px;text-decoration:none;transition:color .15s,box-shadow .15s}
-  .site nav.menu a:first-child{padding-left:0}
-  .site nav.menu a.on,.site nav.menu a:hover{color:var(--orange-deep);box-shadow:inset 0 -2px 0 var(--orange)}
-  @media (max-width:480px){
-    .site .title{font-size:26px}
-    .site .title::after{width:26px;height:24px}
-    .site nav.menu a{font-size:13.5px;padding:0 9px;line-height:42px}
-  }
 </style>
 <!-- Google Analytics 4 -->
 <script>
@@ -210,7 +197,7 @@
   s.src='https://www.googletagmanager.com/gtag/js?id=G-K3SMLQRKGM'; document.head.appendChild(s);
   window.dataLayer=window.dataLayer||[]; window.gtag=function(){dataLayer.push(arguments);};
   gtag('js',new Date()); gtag('config','G-K3SMLQRKGM');
-  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';var t=(a.textContent||'').trim().slice(0,60);if(/coupang\.com|link\.coupang|toss/.test(h)){gtag('event','affiliate_click',{link_url:h,link_text:t,page_path:location.pathname});return;}if(a.closest('.cta,.rel-card,.post-card,.post-list,.card')){gtag('event','internal_link',{link_url:h,link_text:t,page_path:location.pathname});}});
+  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';var t=(a.textContent||'').trim().slice(0,60);if(/coupang\.com|link\.coupang|toss/.test(h)){gtag('event','affiliate_click',{link_url:h,link_text:t,page_path:location.pathname});return;}var area=a.closest('.calc-strip')?'strip':a.closest('.side')?'side':a.closest('.cta,.rel-card,.post-card,.post-list,.card,.tool-card')?'body':'';if(area){gtag('event','internal_link',{link_url:h,link_text:t,link_area:area,page_path:location.pathname});}});
 })();
 </script>
 <script type="application/ld+json">
@@ -221,13 +208,31 @@
 </script>
 </head>
 <body>
+<header class="site"><div class="in">
+  <a class="title" href="/">마이펫랩</a>
+  <p class="desc">우리 아이 돌봄 계산기</p>
+  <nav class="menu" aria-label="주요 메뉴">
+<!-- AUTO:NAV:START -->
+    <a href="/">홈</a>
+    <a href="/age/">나이 계산기</a>
+    <a href="/feed/" aria-current="page">사료 계산기</a>
+    <a href="/guide/start/">처음 키우는 집사</a>
+    <a href="/guide/care/">건강·행동 고민</a>
+    <a href="/guide/goods/">용품·사료 고르기</a>
+    <a href="/guide/senior/">노령묘 집사</a>
+    <a href="/about.html">소개</a>
+<!-- AUTO:NAV:END -->
+  </nav>
+</div></header>
+<div class="calc-strip">
+<!-- AUTO:CALCS:START -->
+    <a href="/age/"><span class="emoji">🎂</span><span class="nm">강아지·고양이 나이 계산기</span></a>
+    <a href="/feed/" aria-current="page"><span class="emoji">🍚</span><span class="nm">사료 급여량 계산기</span></a>
+<!-- AUTO:CALCS:END -->
+</div>
+<div class="layout">
+<main class="main">
 <div class="wrap">
-
-  <header class="site">
-    <a class="title" href="/">마이펫랩</a>
-    <p class="desc">우리 아이 돌봄 계산기</p>
-    <nav class="menu"><a href="/">홈</a><a href="/guide/">가이드</a><a href="/age/">나이 계산기</a><a href="/feed/" class="on">사료 계산기</a><a href="/about.html">소개</a></nav>
-  </header>
 
   <header>
     <span class="eyebrow">하루 사료량</span>
@@ -333,12 +338,41 @@
     </a>
   </section>
 
-  <footer>
-    <p class="disclaimer">본 계산기는 표준 공식 기반의 참고용 도구입니다. 실제 급여량은 사료 포장지 권장표와 수의사 상담을 우선하세요.</p>
-    <p><a href="../">마이펫랩 mypetlab.kr</a> · 우리 아이 돌봄 계산기</p>
-    <nav class="footer-links"><a href="/guide/">가이드</a>·<a href="/about.html">사이트 소개</a>·<a href="/privacy.html">개인정보처리방침</a></nav>
-  </footer>
 </div>
+</main>
+<aside class="side">
+<!-- AUTO:SIDE:START -->
+    <div class="side-box calcs">
+      <h2>계산기</h2>
+      <a class="side-calc" href="/age/"><span class="emoji">🎂</span><span class="txt"><span class="nm">강아지·고양이 나이 계산기</span><span class="ds">사람 나이 환산과 생애 단계</span></span><span class="arr">→</span></a>
+      <a class="side-calc" href="/feed/" aria-current="page"><span class="emoji">🍚</span><span class="txt"><span class="nm">사료 급여량 계산기</span><span class="ds">하루 급여량(g)과 끼니별 양</span></span><span class="arr">→</span></a>
+    </div>
+    <div class="side-box">
+      <h2>검색</h2>
+      <form class="side-search" action="/guide/" method="get" role="search"><input type="search" name="q" placeholder="찾는 말 (예: 사료, 노령묘)" aria-label="글 검색" autocomplete="off"><button type="submit">찾기</button></form>
+    </div>
+    <div class="side-box">
+      <h2>카테고리</h2>
+      <a class="side-cat" href="/guide/start/">처음 키우는 집사 <span>(4)</span></a>
+      <a class="side-cat" href="/guide/care/">건강·행동 고민 <span>(5)</span></a>
+      <a class="side-cat" href="/guide/goods/">용품·사료 고르기 <span>(7)</span></a>
+      <a class="side-cat" href="/guide/senior/">노령묘 집사 <span>(1)</span></a>
+    </div>
+    <div class="side-box">
+      <h2>최근 글</h2>
+      <a class="side-post" href="/guide/silsu.html"><img src="/img/silsu-hero.webp" width="84" height="48" alt="" loading="lazy" decoding="async"><span class="txt"><span class="t">고양이 소변 실수, 원인 점검 5가지</span><span class="d">2026년 9월 4일</span></span></a>
+      <a class="side-post" href="/guide/dubu.html"><img src="/img/dubu-hero.webp" width="84" height="48" alt="" loading="lazy" decoding="async"><span class="txt"><span class="t">두부모래 장단점</span><span class="d">2026년 9월 2일</span></span></a>
+      <a class="side-post" href="/guide/hwajangsil.html"><img src="/img/hwajangsil-hero.webp" width="84" height="48" alt="" loading="lazy" decoding="async"><span class="txt"><span class="t">고양이 화장실 위치와 개수</span><span class="d">2026년 8월 31일</span></span></a>
+      <a class="side-post" href="/guide/baltop.html"><img src="/img/baltop-hero.webp" width="84" height="48" alt="" loading="lazy" decoding="async"><span class="txt"><span class="t">고양이 발톱 깎는 법</span><span class="d">2026년 8월 29일</span></span></a>
+    </div>
+<!-- AUTO:SIDE:END -->
+</aside>
+</div>
+<footer>
+  <p class="disclaimer">본 계산기는 표준 공식 기반의 참고용 도구입니다. 실제 급여량은 사료 포장지 권장표와 수의사 상담을 우선하세요.</p>
+  <p><a href="../">마이펫랩 mypetlab.kr</a> · 우리 아이 돌봄 계산기</p>
+  <nav class="footer-links"><a href="/guide/">가이드</a>·<a href="/about.html">사이트 소개</a>·<a href="/privacy.html">개인정보처리방침</a></nav>
+</footer>
 
 <script>
   const weightEl = document.getElementById('weight');

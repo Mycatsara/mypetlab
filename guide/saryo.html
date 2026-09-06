@@ -32,6 +32,7 @@
   "publisher": {"@type": "Organization", "name": "마이펫랩"}
 }
 </script>
+<link rel="stylesheet" href="/site.css?v=20260906">
 <style>
   :root{
     --bg:#F7F2E9;
@@ -143,7 +144,7 @@
   s.src='https://www.googletagmanager.com/gtag/js?id=G-K3SMLQRKGM'; document.head.appendChild(s);
   window.dataLayer=window.dataLayer||[]; window.gtag=function(){dataLayer.push(arguments);};
   gtag('js',new Date()); gtag('config','G-K3SMLQRKGM');
-  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';var t=(a.textContent||'').trim().slice(0,60);if(/coupang\.com|link\.coupang|toss/.test(h)){gtag('event','affiliate_click',{link_url:h,link_text:t,page_path:location.pathname});return;}if(a.closest('.cta,.rel-card,.post-card,.post-list,.card')){gtag('event','internal_link',{link_url:h,link_text:t,page_path:location.pathname});}});
+  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';var t=(a.textContent||'').trim().slice(0,60);if(/coupang\.com|link\.coupang|toss/.test(h)){gtag('event','affiliate_click',{link_url:h,link_text:t,page_path:location.pathname});return;}var area=a.closest('.calc-strip')?'strip':a.closest('.side')?'side':a.closest('.cta,.rel-card,.post-card,.post-list,.card,.tool-card')?'body':'';if(area){gtag('event','internal_link',{link_url:h,link_text:t,link_area:area,page_path:location.pathname});}});
 })();
 </script>
 <script type="application/ld+json">
@@ -151,6 +152,30 @@
 </script>
 </head>
 <body>
+<header class="site"><div class="in">
+  <a class="title" href="/">마이펫랩</a>
+  <p class="desc">우리 아이 돌봄 계산기</p>
+  <nav class="menu" aria-label="주요 메뉴">
+<!-- AUTO:NAV:START -->
+    <a href="/">홈</a>
+    <a href="/age/">나이 계산기</a>
+    <a href="/feed/">사료 계산기</a>
+    <a href="/guide/start/">처음 키우는 집사</a>
+    <a href="/guide/care/">건강·행동 고민</a>
+    <a href="/guide/goods/">용품·사료 고르기</a>
+    <a href="/guide/senior/">노령묘 집사</a>
+    <a href="/about.html">소개</a>
+<!-- AUTO:NAV:END -->
+  </nav>
+</div></header>
+<div class="calc-strip">
+<!-- AUTO:CALCS:START -->
+    <a href="/age/"><span class="emoji">🎂</span><span class="nm">강아지·고양이 나이 계산기</span></a>
+    <a href="/feed/"><span class="emoji">🍚</span><span class="nm">사료 급여량 계산기</span></a>
+<!-- AUTO:CALCS:END -->
+</div>
+<div class="layout">
+<main class="main">
 <div class="wrap">
 
   <nav class="crumb"><a href="/">홈</a> › <a href="/guide/">가이드</a> › 사료 고르는 법</nav>
@@ -214,9 +239,9 @@
     <div class="next-read">
       <h2>이어서 읽으면 좋은 글</h2>
       <ol class="post-list">
-        <li><a href="/guide/seupsik.html"><span class="n">01</span><span class="t">고양이 습식 vs 건식 사료 — 어떻게 섞어 먹일까</span><span class="g">→</span></a></li>
-        <li><a href="/guide/silsu.html"><span class="n">02</span><span class="t">고양이 소변 실수, 원인 점검 5가지</span><span class="g">→</span></a></li>
-        <li><a href="/guide/dubu.html"><span class="n">03</span><span class="t">두부모래 장단점</span><span class="g">→</span></a></li>
+        <li><a href="/guide/dubu.html"><span class="n">01</span><span class="t">두부모래 장단점</span><span class="g">→</span></a></li>
+        <li><a href="/guide/cattower.html"><span class="n">02</span><span class="t">캣타워 고르는 법 — 확인할 4가지</span><span class="g">→</span></a></li>
+        <li><a href="/guide/feeder.html"><span class="n">03</span><span class="t">고양이 자동급식기 고르는 법 — 확인할 5가지</span><span class="g">→</span></a></li>
       </ol>
     </div>
 <!-- AUTO:NEXT:END -->
@@ -228,10 +253,39 @@
 
   <a class="back" href="/guide/">← 가이드 목록으로</a>
 
-  <footer>
-    <p class="disclaimer">본 사이트의 콘텐츠는 참고용이며, 반려동물의 건강에 관한 결정은 수의사와 상담하세요.</p>
-    <p><a href="/">마이펫랩 mypetlab.kr</a> · <a href="/guide/">가이드</a> · <a href="/about.html">사이트 소개</a> · <a href="/privacy.html">개인정보처리방침</a></p>
-  </footer>
 </div>
+</main>
+<aside class="side">
+<!-- AUTO:SIDE:START -->
+    <div class="side-box calcs">
+      <h2>계산기</h2>
+      <a class="side-calc" href="/age/"><span class="emoji">🎂</span><span class="txt"><span class="nm">강아지·고양이 나이 계산기</span><span class="ds">사람 나이 환산과 생애 단계</span></span><span class="arr">→</span></a>
+      <a class="side-calc" href="/feed/"><span class="emoji">🍚</span><span class="txt"><span class="nm">사료 급여량 계산기</span><span class="ds">하루 급여량(g)과 끼니별 양</span></span><span class="arr">→</span></a>
+    </div>
+    <div class="side-box">
+      <h2>검색</h2>
+      <form class="side-search" action="/guide/" method="get" role="search"><input type="search" name="q" placeholder="찾는 말 (예: 사료, 노령묘)" aria-label="글 검색" autocomplete="off"><button type="submit">찾기</button></form>
+    </div>
+    <div class="side-box">
+      <h2>카테고리</h2>
+      <a class="side-cat" href="/guide/start/">처음 키우는 집사 <span>(4)</span></a>
+      <a class="side-cat" href="/guide/care/">건강·행동 고민 <span>(5)</span></a>
+      <a class="side-cat" href="/guide/goods/">용품·사료 고르기 <span>(7)</span></a>
+      <a class="side-cat" href="/guide/senior/">노령묘 집사 <span>(1)</span></a>
+    </div>
+    <div class="side-box">
+      <h2>최근 글</h2>
+      <a class="side-post" href="/guide/silsu.html"><img src="/img/silsu-hero.webp" width="84" height="48" alt="" loading="lazy" decoding="async"><span class="txt"><span class="t">고양이 소변 실수, 원인 점검 5가지</span><span class="d">2026년 9월 4일</span></span></a>
+      <a class="side-post" href="/guide/dubu.html"><img src="/img/dubu-hero.webp" width="84" height="48" alt="" loading="lazy" decoding="async"><span class="txt"><span class="t">두부모래 장단점</span><span class="d">2026년 9월 2일</span></span></a>
+      <a class="side-post" href="/guide/hwajangsil.html"><img src="/img/hwajangsil-hero.webp" width="84" height="48" alt="" loading="lazy" decoding="async"><span class="txt"><span class="t">고양이 화장실 위치와 개수</span><span class="d">2026년 8월 31일</span></span></a>
+      <a class="side-post" href="/guide/baltop.html"><img src="/img/baltop-hero.webp" width="84" height="48" alt="" loading="lazy" decoding="async"><span class="txt"><span class="t">고양이 발톱 깎는 법</span><span class="d">2026년 8월 29일</span></span></a>
+    </div>
+<!-- AUTO:SIDE:END -->
+</aside>
+</div>
+<footer>
+  <p class="disclaimer">본 사이트의 콘텐츠는 참고용이며, 반려동물의 건강에 관한 결정은 수의사와 상담하세요.</p>
+  <p><a href="/">마이펫랩 mypetlab.kr</a> · <a href="/guide/">가이드</a> · <a href="/about.html">사이트 소개</a> · <a href="/privacy.html">개인정보처리방침</a></p>
+</footer>
 </body>
 </html>

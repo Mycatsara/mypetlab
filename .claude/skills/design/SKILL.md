@@ -30,21 +30,27 @@ description: 마이펫랩 mypetlab.kr 디자인 규칙(색상·폰트·컴포넌
 - h2: 19~20px/900. 글 본문 p 15.5px(#3E362B), lead 16.5px ink. 계산기 본문 p 14.5px
 - eyebrow: 12px/700 letter-spacing 2px, 주황 글자+1.5px 주황 테두리, radius 4px
 
-## 4. 레이아웃
-- **홈 `.wrap{max-width:1040px}` 2단** (2026-09-06 개편, 눈치 구조 차용): 왼쪽 본문 `main`(≈672px) + 오른쪽 `aside` 300px, `gap:28px`. 마크업은 **aside가 먼저**(모바일에서 계산기가 글 위로 오도록) 오고 PC에서는 `grid-column`으로 열을 바꾼다. 사이드바 `.side-inner`는 `sticky top:20px`
-- 계산기 `560px` / 글·가이드 목록·소개 `640px`. `padding:32px 20px 60px`(홈은 24px 위)
-- **상단 머리 `.site`(홈·가이드·계산기·소개 공용)**: `.title` 30px/900 letter-spacing -1px + 발바닥 SVG(주황, `::after` 30×28) → `.desc` 13px sub → `nav.menu`(홈·가이드·나이 계산기·사료 계산기·소개, 14.5px/700 line-height 46px, 현재·hover는 `--orange-deep` 글자 + `inset 0 -2px 0 var(--orange)` 밑줄). 아래 1.5px 주황 선. **원본은 `tools/sitehead.js`** — 새 페이지에는 `node tools/sitehead.js 파일` 로 심고, 조각을 고치면 `--force`로 다시 심는다. 홈은 `<h1 class="title">`, 나머지는 `<a class="title" href="/">`. 예전 `.home-link`·`.back "← 마이펫랩 홈"`은 메뉴가 대신하므로 없앴다(글 하단 `.back "← 가이드 목록으로"`는 유지). 글(guide/*.html) 17편에는 아직 안 넣었다 — 다음 글 발행 뒤 일괄 예정
-- 글 상단 `.crumb 홈 › 가이드 › 주제` 유지(BreadcrumbList와 짝)
-- 모바일(≤768px): 홈은 1단, 사이드바 태그 위젯은 숨김(`.widget-tags{display:none}`), 계산기 2장 가로 배치 → ≤560px 세로 배치·가로형 카드(이모지 왼쪽, 설명문 숨김). ≤560px 글 카드 1열
+## 4. 레이아웃 (2026-09-06 카테고리화 개편 — taxtool·눈치와 같은 구조)
+- **공용 `site.css`**(`/site.css?v=버전`, 버전은 `tools/buildlist.js` CFG.cssVersion·`tools/shell.js` CSSV와 맞춘다)가 **상단 머리·모바일 계산기 줄·2단 레이아웃·사이드바·글 카드 격자·칩**을 담당한다. 페이지 고유 스타일(계산기 입력·결과, 글 본문 등)은 지금처럼 각 페이지 인라인 `<style>`에 둔다. "단일 파일" 원칙의 유일한 예외
+- **전 페이지 골격** (`tools/shell.js`가 심는다, 새 글은 최근 글 복사로 자동 승계):
+  `header.site > .in`(`.title` 로고+발바닥 SVG → `.desc` → `nav.menu` **AUTO:NAV**) → `.calc-strip` **AUTO:CALCS**(모바일 계산기 줄, ≥900px 숨김) → `.layout` > `main.main > .wrap`(페이지 내용) + `aside.side` **AUTO:SIDE**(≥900px만, sticky) → `footer`(`.layout` 밖, 전체 폭). 마커 내용은 전부 `node tools/buildlist.js`가 채운다 — 손으로 쓰지 않는다
+- **상단 메뉴**: 홈 · 나이 계산기 · 사료 계산기 · 카테고리 4 · 소개 (`posts.json`의 calcs·cats 순). 모바일은 가로 스크롤(스크롤바 숨김). 현재 페이지 `aria-current=page` → `--orange-deep` 글자 + 2px 주황 밑줄
+- **사이드바(PC)**: ① `.side-box.calcs` 계산기 2개(1.5px 주황 테두리 강조, `.side-calc` 이모지+이름+설명) ② 검색 `form.side-search` → `/guide/?q=` ③ `.side-cat` 카테고리+편수 ④ `.side-post` 최근 글 4편(84×48 썸네일). 위젯 머리 `h2` 12px/700 letter-spacing 2px `--orange-deep`
+- **폭**: `.layout` 1040px = 본문 ≈672px + 사이드바 300px(`gap:28px`). 안쪽 `.wrap`은 계산기 560 / 글·목록·소개·카테고리 640이며 PC에서는 `margin:0`(왼쪽 정렬)·좌우 padding 0
+- **카테고리 페이지** `/guide/<slug>/`: `tools/tpl-category.html`에서 buildlist가 생성(없을 때만). 설명 한 줄 + 편수, 칩(링크), 2열 카드. 카테고리는 3~4개·영문 슬러그·글은 하나만(`기록/카테고리화_적용안내.md`)
+- 글 상단 `.crumb 홈 › 가이드 › 주제` 유지(BreadcrumbList와 짝). 글 하단 `.back "← 가이드 목록으로"` 유지. 예전 `.home-link`·"← 마이펫랩 홈"은 메뉴가 대신하므로 없앴다
 - 세로 리듬: 헤더 → 탭(26px) → 카드(14px) → 결과(22px) → 섹션(44px) → 푸터(48px)
 
 ## 5. 컴포넌트 (클래스명·수치 고정)
 | 컴포넌트 | 규칙 |
 |---|---|
-| `.tool-card` 홈 계산기 카드 (사이드바) | paper, **1.5px 주황 테두리**(사이드로 빠진 만큼 강조), **radius 16px**, padding 18px, 그림자 `0 3px 12px`, hover `translateY(-2px)`+`0 6px 20px`, 우하단 `.paw` 워터마크(opacity .07, -20deg). 안은 `.emoji`(30px) → `.txt`(h3 17px/900 · p 13.5px sub · `.go`) |
-| `.widget` 사이드바 위젯 | `margin-bottom:22px`, h2 14px/900 + 1.5px 먹색 밑줄(눈치 위젯 머리와 동일). 홈 위젯 2개: 계산기 · 주제별 가이드(`.tag-list`) |
-| `.tag-list` 태그 칩 링크 | 가이드 목록 `.chip`과 같은 모양(pill, 1.5px line, 13px/700), hover 주황 테두리+#FDF1E8. 링크는 `/guide/#태그` — 가이드 목록이 해시를 읽어 그 칩을 눌러 준다 |
-| `.grid` + `.post-card` 홈 글 카드 | `repeat(2,minmax(0,1fr)) gap:14px`(≤560px 1열). 카드 paper 1px line radius 14px padding 16px, hover 주황 테두리. 안은 `.thumb`(16:9 webp, radius 10px, 1px line, `img/<슬러그>-hero.webp` 있을 때만) → `.tag` 칩 → h3 16.5px/900 → p 13.5px 2줄 말줄임 → `.foot`(`.date` 12px · `.go`). **`tools/buildlist.js`가 생성** — 손으로 쓰지 않는다 |
+| `.side-box` 사이드바 위젯 (site.css) | paper 1px line radius 14px padding 16px 18px 12px, `margin-bottom:18px`. `.calcs`는 1.5px 주황 테두리+`0 3px 12px` 그림자. h2 12px/700 letter-spacing 2px `--orange-deep` |
+| `.side-calc` 사이드바 계산기 | flex, `.emoji` 28px + `.nm` 15px/900 + `.ds` 12.5px sub + `.arr` 주황 화살표. hover·현재 `#FDF1E8` 배경 |
+| `.side-search` | input `#FBFAF7` 1.5px line radius 10px, focus 주황 / 버튼 `--orange-deep` 배경 흰 글자 radius 10px |
+| `.side-cat` / `.side-post` | 카테고리 행 14px/700 + 편수 `(n)` sub, 1px line 구분 / 최근 글 84×48 썸네일(radius 6px) + 제목 13.5px/700 2줄 말줄임 + 날짜 12px |
+| `.calc-strip` 모바일 계산기 줄 | 헤더 아래 flex 2칸, 1.5px 주황 테두리 radius 12px, `.emoji` 24px + `.nm` 13.5px/900. ≥900px 숨김 |
+| `.list.grid` + `.post-card.thumb` 글 카드 (site.css) | 1열 → ≥600px 2열 `gap:14px`. 카드 paper 1px line radius 14px padding 0 overflow hidden, hover 주황 테두리. 안은 `img`(16:9 `img/<슬러그>-hero.webp`, 없으면 `.ph` #EAE3D5) → `.body`(padding 14px 16px 16px: `.tag` 칩 + `.date` 12px → h2 16px/900 → p 13px 3줄 말줄임). 홈은 짧은 제목(`short`), 목록·카테고리는 전체 제목. **`tools/buildlist.js`가 생성** — 손으로 쓰지 않는다 |
+| `.chips` + `.chip` 카테고리 칩 (site.css) | pill 1.5px line 13px/700 sub, hover·`.on` 주황 테두리+#FDF1E8+`--orange-deep`. **버튼이 아니라 카테고리 페이지 링크**(전체 n · 카테고리 n) |
 | `.tabs` 동물 선택 | 트랙 #EAE3D5 radius 12px padding 4px / 버튼 15px/700 radius 9px / `.on` paper + `0 1px 3px rgba(43,36,28,.12)` |
 | `.card` 입력 카드 | paper, 1px line, radius 14px, padding 22px 20px |
 | `input[type=text]` | Plex Mono 24px/600 우측 정렬, 2px line radius 10px, focus 주황 |
@@ -92,15 +98,15 @@ description: 마이펫랩 mypetlab.kr 디자인 규칙(색상·폰트·컴포넌
 
 ## 8. 금지
 - 차가운 파랑·보라 계열, 그라데이션, 네온, 유리 효과, 파스텔 무지개 카드
-- 새 폰트·아이콘 라이브러리·Tailwind 도입 금지 — 순수 HTML/CSS/JS 단일 파일
+- 새 폰트·아이콘 라이브러리·Tailwind 도입 금지 — 순수 HTML/CSS/JS. 공용 CSS는 `site.css` 하나뿐(4항), 그 밖은 페이지 인라인
 - 건강·수의학 문구는 원고 그대로. 디자인 작업 중 문구 수정 금지
 - 조급함 파는 문구 금지
 
-## 8-2. 로컬 미리보기
-`node tools/serve.js`(3458) 또는 `.claude/launch.json`의 `mypetlab` 설정으로 서버를 띄워 375px·1280px 두 폭에서 확인한다. 홈은 `?ga=off`로 열어 집계에서 뺀다.
+## 8-2. 로컬 미리보기·검사
+`node tools/serve.js`(3458) 또는 `.claude/launch.json`의 `mypetlab` 설정으로 서버를 띄워 375px·1280px 두 폭에서 확인한다. 홈은 `?ga=off`로 열어 집계에서 뺀다. 배포 전 `node --test tools/test/shell.test.js`(카테고리 페이지·마커·site.css·필수 태그·내부 링크·sitemap·멱등)가 전부 통과해야 한다.
 
 ## 9. 모바일 체크 (배포 전)
-- 홈: 375px에서 메뉴 5개가 한 줄인지, 계산기 카드 2장이 글 목록 **위**에 오는지, `scrollWidth`가 375를 넘지 않는지
+- 375px에서 상단 메뉴가 가로 스크롤되는지(줄바꿈 금지), 헤더 아래 계산기 줄 2칸이 보이는지, 사이드바는 숨고 `scrollWidth`가 375를 넘지 않는지. ≥900px에서 사이드바가 나오는지
 - 375px에서 `.r-total .v` 36px가 한 줄인지, 탭 라벨(이모지 포함)이 안 꺾이는지, `.size-chips` 3개가 한 줄에 들어가는지
 - 글은 호흡 단위 줄바꿈(`~입니다.`), 표는 가로 스크롤 없이 들어가는지(열 4개 이하 권장)
 - 인앱브라우저 폰트 확대 시 `-webkit-text-size-adjust:100%`

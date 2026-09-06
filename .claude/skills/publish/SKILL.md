@@ -64,12 +64,13 @@ git log --since=midnight --diff-filter=A --name-only --pretty=format: -- guide/ 
 ## 4단계: 목록 반영 (tools/posts.json 한 곳만 고친다)
 
 1. **tools/posts.json**의 `posts` 배열 **맨 앞**에 새 글 항목을 추가한다:
-   `{ "slug", "date"(게시일), "tag"(반드시 파일 위쪽 "tags" 목록 안의 값), "title"(목록용 전체 제목), "short"(홈·관련글용 짧은 제목, 30자 안팎), "summary"(목록 카드 설명 2줄) }`
-   문맥상 꼭 이어 읽히면 좋은 글이 있으면 `"related": ["슬러그", ...]`로 직접 지정한다. 생략하면 같은 태그 우선 → 최신순으로 자동 선정된다.
-2. `node tools/buildlist.js` 실행 → **가이드 목록·태그 칩·전체 편수·홈 최신 6편 카드(썸네일)·모든 글의 "이어서 읽으면 좋은 글"이 한 번에 갱신**된다. 오류가 나면(파일 없음, 슬러그 중복 등) 메시지대로 고친 뒤 다시 실행한다.
+   `{ "slug", "date"(게시일), "cat"(반드시 파일 위쪽 "cats"의 slug 중 **하나만** — start 처음 키우는 집사 / care 건강·행동 고민 / goods 용품·사료 고르기 / senior 노령묘 집사), "title"(목록용 전체 제목), "short"(홈·관련글용 짧은 제목, 30자 안팎), "summary"(목록 카드 설명 2줄) }`
+   문맥상 꼭 이어 읽히면 좋은 글이 있으면 `"related": ["슬러그", ...]`로 직접 지정한다. 생략하면 같은 카테고리 우선 → 최신순으로 자동 선정된다. 옛 `tag` 필드는 쓰지 않는다(9/6 카테고리화)
+2. `node tools/buildlist.js` 실행 → **상단 메뉴·사이드바(카테고리 편수·최근 글)·카테고리 페이지·가이드 목록·홈 최신 6편 카드·모든 글의 "이어서 읽으면 좋은 글"·llms.txt 글 목록이 한 번에 갱신**된다(전 페이지 순회). 오류가 나면(파일 없음, 슬러그 중복, cats에 없는 cat 등) 메시지대로 고친 뒤 다시 실행한다.
 3. **sitemap.xml**: `</urlset>` 앞에 새 url 블록 추가 (`<lastmod>`=게시일 YYYY-MM-DD). **글의 `dateModified`를 갱신하면 sitemap의 `<lastmod>`도 같은 날짜로 함께 갱신**한다(불일치 금지).
+4. `node --test tools/test/shell.test.js` 통과 확인(골격·마커·링크·멱등).
 
-※ guide/index.html·index.html·각 글의 `<!-- AUTO:... -->` 구간은 **손으로 고치지 않는다.** 전부 buildlist.js가 생성한다.
+※ 각 페이지의 `<!-- AUTO:... -->` 구간(NAV·CALCS·SIDE·HOME·CHIPS·LIST·NEXT·LLMS)은 **손으로 고치지 않는다.** 전부 buildlist.js가 생성한다. 새 글은 최근 글을 복사하므로 골격(site.css 링크·헤더·사이드바 자리)이 같이 따라온다 — 마커가 빠져 있으면 `node tools/shell.js guide/<슬러그>.html`로 심는다.
 
 ## 5단계: 배포 전 검사
 
