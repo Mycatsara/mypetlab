@@ -18,7 +18,6 @@ const CFG = {
   recentMax: 4,                     // 사이드바 최근 글 수
   nextMax: 3,                       // 글 하단 관련 글 수
   nextHeading: '이어서 읽으면 좋은 글',
-  moreText: (n) => `가이드 전체 ${n}편 보기 →`,
   countText: (n) => `전체 ${n}편`,
   cssVersion: '20260906b',           // site.css 캐시 버전 — site.css를 고치면 올린다
 };
@@ -138,8 +137,7 @@ if (fill('guide/index.html', 'LIST', posts.map((p) => gridCard(p, false)).join('
 // ---------- 2) 홈 ----------
 const home = `      <div class="list grid">
 ${posts.slice(0, CFG.homeMax).map((p) => gridCard(p, true)).join('\n')}
-      </div>
-      <a class="rel-more" href="/guide/">${CFG.moreText(posts.length)}</a>`;
+      </div>`;
 if (fill('index.html', 'HOME', home)) changed++;
 
 // ---------- 3) 각 글의 관련 글 ----------
