@@ -66,7 +66,7 @@ git log --since=midnight --diff-filter=A --name-only --pretty=format: -- guide/ 
 1. **tools/posts.json**의 `posts` 배열 **맨 앞**에 새 글 항목을 추가한다:
    `{ "slug", "date"(게시일), "tag"(반드시 파일 위쪽 "tags" 목록 안의 값), "title"(목록용 전체 제목), "short"(홈·관련글용 짧은 제목, 30자 안팎), "summary"(목록 카드 설명 2줄) }`
    문맥상 꼭 이어 읽히면 좋은 글이 있으면 `"related": ["슬러그", ...]`로 직접 지정한다. 생략하면 같은 태그 우선 → 최신순으로 자동 선정된다.
-2. `node tools/buildlist.js` 실행 → **가이드 목록·태그 칩·전체 편수·홈 최신 5편·모든 글의 "이어서 읽으면 좋은 글"이 한 번에 갱신**된다. 오류가 나면(파일 없음, 슬러그 중복 등) 메시지대로 고친 뒤 다시 실행한다.
+2. `node tools/buildlist.js` 실행 → **가이드 목록·태그 칩·전체 편수·홈 최신 6편 카드(썸네일)·모든 글의 "이어서 읽으면 좋은 글"이 한 번에 갱신**된다. 오류가 나면(파일 없음, 슬러그 중복 등) 메시지대로 고친 뒤 다시 실행한다.
 3. **sitemap.xml**: `</urlset>` 앞에 새 url 블록 추가 (`<lastmod>`=게시일 YYYY-MM-DD). **글의 `dateModified`를 갱신하면 sitemap의 `<lastmod>`도 같은 날짜로 함께 갱신**한다(불일치 금지).
 
 ※ guide/index.html·index.html·각 글의 `<!-- AUTO:... -->` 구간은 **손으로 고치지 않는다.** 전부 buildlist.js가 생성한다.

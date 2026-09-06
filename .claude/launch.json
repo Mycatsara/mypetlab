@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "mypetlab",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["tools/serve.js", "3458"],
+      "port": 3458
+    }
+  ]
+}

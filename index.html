@@ -60,58 +60,68 @@
     color:var(--ink);
     line-height:1.6;
   }
-  .wrap{max-width:560px;margin:0 auto;padding:32px 20px 60px}
+  .wrap{max-width:1040px;margin:0 auto;padding:24px 20px 60px}
 
-  header .eyebrow{
-    display:inline-block;font-size:12px;font-weight:700;letter-spacing:2px;
-    color:var(--orange-deep);border:1.5px solid var(--orange);
-    padding:4px 10px;border-radius:4px;margin-bottom:14px;
-  }
-  header h1{font-size:30px;font-weight:900;line-height:1.3;letter-spacing:-0.5px}
-  header h1 .hi{color:var(--orange-deep)}
-  header p{margin-top:10px;font-size:15px;color:var(--sub)}
+  /* 상단 머리(로고·메뉴) — 홈·가이드·계산기·소개 공용 */
+  .site{border-bottom:1.5px solid var(--orange);margin-bottom:26px}
+  .site .title{display:inline-flex;align-items:center;gap:6px;font-size:30px;font-weight:900;letter-spacing:-1px;line-height:1.2;color:var(--ink);text-decoration:none}
+  .site .title::after{content:"";display:inline-block;width:30px;height:28px;margin-bottom:-3px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 38'%3E%3Cg fill='%23E07A3F'%3E%3Ccircle cx='9' cy='15' r='4.4'/%3E%3Ccircle cx='17' cy='8' r='4.4'/%3E%3Ccircle cx='26' cy='8' r='4.4'/%3E%3Ccircle cx='33' cy='15' r='4.4'/%3E%3Cellipse cx='21' cy='27' rx='10.5' ry='8.5'/%3E%3C/g%3E%3C/svg%3E") no-repeat center/contain}
+  .site .desc{font-size:13px;color:var(--sub);margin-top:2px}
+  .site nav.menu{display:flex;flex-wrap:wrap;margin-top:6px}
+  .site nav.menu a{color:var(--ink);font-size:14.5px;font-weight:700;line-height:46px;padding:0 13px;text-decoration:none;transition:color .15s,box-shadow .15s}
+  .site nav.menu a:first-child{padding-left:0}
+  .site nav.menu a.on,.site nav.menu a:hover{color:var(--orange-deep);box-shadow:inset 0 -2px 0 var(--orange)}
 
-  /* 도구 카드 */
-  .tools{margin-top:26px;display:flex;flex-direction:column;gap:14px}
+  /* 2단: 본문 + 사이드바(계산기) */
+  .layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:28px;align-items:start}
+  /* 마크업은 사이드바가 먼저(모바일에서 계산기가 위로 오도록) — PC에서는 열을 바꿔 본문을 왼쪽에 둔다 */
+  .layout>main{grid-column:1;grid-row:1}
+  .layout>aside{grid-column:2;grid-row:1}
+  .side-inner{position:sticky;top:20px}
+  .widget{margin-bottom:22px}
+  .widget h2{font-size:14px;font-weight:900;letter-spacing:-0.2px;padding-bottom:6px;margin-bottom:12px;border-bottom:1.5px solid var(--ink)}
+
+  /* 계산기 카드 — 사이드바 강조판(주황 테두리) */
+  .tools{display:flex;flex-direction:column;gap:12px}
   .tool-card{
-    display:block;background:var(--paper);border:1px solid var(--line);
-    border-radius:16px;padding:22px 20px;text-decoration:none;color:var(--ink);
+    display:block;background:var(--paper);border:1.5px solid var(--orange);
+    border-radius:16px;padding:18px 18px;text-decoration:none;color:var(--ink);
     box-shadow:0 3px 12px rgba(43,36,28,.06);
-    transition:border-color .15s, transform .15s;
+    transition:box-shadow .15s, transform .15s;
     position:relative;overflow:hidden;
   }
-  .tool-card:hover{border-color:var(--orange);transform:translateY(-2px)}
-  .tool-card .emoji{
-    font-size:34px;line-height:1;display:block;margin-bottom:12px;
-  }
-  .tool-card h2{font-size:19px;font-weight:900;letter-spacing:-0.3px}
-  .tool-card p{margin-top:6px;font-size:14px;color:var(--sub)}
-  .tool-card .go{
-    display:inline-block;margin-top:12px;font-size:14px;font-weight:700;color:var(--orange-deep);
-  }
-  .tool-card .paw{
-    position:absolute;right:-10px;bottom:-14px;font-size:80px;opacity:.07;transform:rotate(-20deg);
-  }
+  .tool-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(43,36,28,.10)}
+  .tool-card .emoji{font-size:30px;line-height:1;display:block;margin-bottom:10px}
+  .tool-card h3{font-size:17px;font-weight:900;letter-spacing:-0.3px;line-height:1.35}
+  .tool-card p{margin-top:6px;font-size:13.5px;color:var(--sub);line-height:1.5}
+  .tool-card .go{display:inline-block;margin-top:10px;font-size:13.5px;font-weight:700;color:var(--orange-deep)}
+  .tool-card .txt{min-width:0}
+  .tool-card .paw{position:absolute;right:-10px;bottom:-14px;font-size:80px;opacity:.07;transform:rotate(-20deg)}
 
-  section{margin-top:44px}
-  section h2{font-size:20px;font-weight:900;letter-spacing:-0.3px;margin-bottom:12px}
+  .tag-list{display:flex;flex-wrap:wrap;gap:8px}
+  .tag-list a{font-size:13px;font-weight:700;color:var(--sub);background:var(--paper);border:1.5px solid var(--line);border-radius:999px;padding:6px 12px;text-decoration:none;transition:.15s}
+  .tag-list a:hover{border-color:var(--orange);background:#FDF1E8;color:var(--orange-deep)}
+
+  main section+section{margin-top:44px}
+  section h2{font-size:20px;font-weight:900;letter-spacing:-0.3px;margin-bottom:14px}
   section p{font-size:14.5px;color:#3E362B;margin-bottom:10px}
 
-  .related{display:flex;flex-direction:column;gap:10px}
-  .rel-card{
-    display:flex;align-items:center;justify-content:space-between;gap:12px;
-    background:var(--paper);border:1px solid var(--line);border-radius:10px;
-    padding:13px 16px;text-decoration:none;transition:border-color .15s;
+  /* 글 카드 2열 그리드 */
+  .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  .post-card{
+    display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);
+    border-radius:14px;padding:16px 16px 14px;text-decoration:none;color:var(--ink);transition:border-color .15s;
   }
-  .rel-card:hover{border-color:var(--orange)}
-  .rel-card .txt{min-width:0}
-  .rel-card .tag{
-    display:inline-block;font-size:11px;font-weight:700;letter-spacing:.5px;
-    color:var(--orange-deep);background:#FDF1E8;border-radius:4px;padding:2px 7px;margin-bottom:5px;
-  }
-  .rel-card .t{font-size:14px;font-weight:700;color:var(--ink);line-height:1.45}
-  .rel-card .arr{flex:none;color:var(--orange-deep);font-weight:700;font-size:15px}
-  .rel-more{display:inline-block;margin-top:12px;font-size:13.5px;font-weight:700;color:var(--orange-deep);text-decoration:none}
+  .post-card:hover{border-color:var(--orange)}
+  .post-card .thumb{display:block;width:100%;height:auto;aspect-ratio:1200/686;object-fit:cover;border-radius:10px;border:1px solid var(--line);margin-bottom:12px}
+  .post-card .tag{align-self:flex-start;font-size:11px;font-weight:700;letter-spacing:.5px;color:var(--orange-deep);background:#FDF1E8;border-radius:4px;padding:2px 7px;margin-bottom:8px}
+  .post-card h3{font-size:16.5px;font-weight:900;letter-spacing:-0.3px;line-height:1.4}
+  .post-card:hover h3{color:var(--orange-deep)}
+  .post-card p{margin:6px 0 0;font-size:13.5px;color:#3E362B;line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .post-card .foot{margin-top:auto;padding-top:10px;display:flex;justify-content:space-between;align-items:baseline}
+  .post-card .date{font-size:12px;color:#6E6455}
+  .post-card .go{font-size:13px;font-weight:700;color:var(--orange-deep)}
+  .rel-more{display:inline-block;margin-top:14px;font-size:13.5px;font-weight:700;color:var(--orange-deep);text-decoration:none}
   .rel-more:hover{text-decoration:underline}
 
   details{
@@ -132,14 +142,29 @@
   footer .footer-links a{color:#6E6455;text-decoration:underline;margin:0 6px}
   footer .footer-links a:hover{color:var(--sub)}
 
-  /* 글 목록(번호형) — 홈·글 하단 공용 */
-  .post-list{list-style:none;margin:14px 0 0;padding:0;border-top:1px solid var(--line)}
-  .post-list li{border-bottom:1px solid var(--line)}
-  .post-list a{display:flex;align-items:baseline;gap:10px;padding:12px 2px;text-decoration:none}
-  .post-list .n{flex:none;font-size:12.5px;font-weight:700;color:#6E6455}
-  .post-list .t{flex:1;font-size:14.5px;font-weight:700;color:var(--ink);line-height:1.45}
-  .post-list a:hover .t{color:var(--orange-deep)}
-  .post-list .g{flex:none;color:var(--orange-deep);font-weight:700;font-size:14px}
+  /* 태블릿·모바일: 1단으로 접고 계산기를 글 위로 올린다 */
+  @media (max-width:768px){
+    .layout{display:block}
+    .side-inner{position:static}
+    .widget-tags{display:none}
+    .tools{flex-direction:row}
+    .tool-card{flex:1;min-width:0}
+    main{margin-top:6px}
+  }
+  @media (max-width:560px){
+    .grid{grid-template-columns:1fr}
+    .tools{flex-direction:column;gap:10px}
+    .tool-card{display:flex;align-items:center;gap:14px;padding:14px 16px}
+    .tool-card .emoji{margin:0;font-size:28px}
+    .tool-card p{display:none}
+    .tool-card .go{margin-top:2px}
+    .tool-card .paw{display:none}
+  }
+  @media (max-width:480px){
+    .site .title{font-size:26px}
+    .site .title::after{width:26px;height:24px}
+    .site nav.menu a{font-size:13.5px;padding:0 9px;line-height:42px}
+  }
 </style>
 <!-- Google Analytics 4 -->
 <script>
@@ -154,71 +179,136 @@
   s.src='https://www.googletagmanager.com/gtag/js?id=G-K3SMLQRKGM'; document.head.appendChild(s);
   window.dataLayer=window.dataLayer||[]; window.gtag=function(){dataLayer.push(arguments);};
   gtag('js',new Date()); gtag('config','G-K3SMLQRKGM');
-  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';var t=(a.textContent||'').trim().slice(0,60);if(/coupang\.com|link\.coupang|toss/.test(h)){gtag('event','affiliate_click',{link_url:h,link_text:t,page_path:location.pathname});return;}if(a.closest('.cta,.rel-card,.post-card,.post-list,.card')){gtag('event','internal_link',{link_url:h,link_text:t,page_path:location.pathname});}});
+  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';var t=(a.textContent||'').trim().slice(0,60);if(/coupang\.com|link\.coupang|toss/.test(h)){gtag('event','affiliate_click',{link_url:h,link_text:t,page_path:location.pathname});return;}if(a.closest('.cta,.rel-card,.post-card,.post-list,.card,.tool-card')){gtag('event','internal_link',{link_url:h,link_text:t,page_path:location.pathname});}});
 })();
 </script>
 </head>
 <body>
 <div class="wrap">
 
-  <header>
-    <span class="eyebrow">MYPETLAB · 우리 아이 돌봄 계산기</span>
-    <h1>우리 아이, <span class="hi">숫자</span>로<br>더 잘 돌보기 🐾</h1>
-    <p>강아지·고양이 나이 환산부터 하루 사료량까지. 집사와 견주에게 필요한 계산기를 모았습니다.</p>
+  <header class="site">
+    <h1 class="title">마이펫랩</h1>
+    <p class="desc">우리 아이 돌봄 계산기 · 강아지·고양이 나이 환산부터 하루 사료량, 돌봄 가이드까지</p>
+    <nav class="menu"><a href="/" class="on">홈</a><a href="/guide/">가이드</a><a href="/age/">나이 계산기</a><a href="/feed/">사료 계산기</a><a href="/about.html">소개</a></nav>
   </header>
 
-  <div class="tools">
-    <a class="tool-card" href="age/">
-      <span class="emoji">🎂</span>
-      <h2>강아지·고양이 나이 계산기</h2>
-      <p>우리 아이는 사람 나이로 몇 살일까? 생애 단계(성장기·청년·중년·노령)까지 알려드립니다.</p>
-      <span class="go">계산해 보기 →</span>
-      <span class="paw">🐾</span>
-    </a>
-    <a class="tool-card" href="feed/">
-      <span class="emoji">🍚</span>
-      <h2>사료 급여량 계산기</h2>
-      <p>체중과 사료 칼로리를 넣으면 하루 급여량(g)과 끼니별 양을 계산합니다. 중성화·다이어트·노령까지 반영.</p>
-      <span class="go">계산해 보기 →</span>
-      <span class="paw">🐾</span>
-    </a>
-  </div>
+  <div class="layout">
 
-  <section>
-    <h2>이 사이트는요</h2>
-    <p>반려동물을 키우다 보면 의외로 <b>숫자가 궁금한 순간</b>이 많습니다. 우리 아이가 사람 나이로 몇 살인지, 사료는 하루에 몇 g을 줘야 하는지, 포장지 급여표는 왜 이렇게 복잡한지.</p>
-    <p>그때마다 바로 답을 주는 계산기를 하나씩 만들어 모으고 있습니다. 전부 무료이고, 가입 없이 쓸 수 있습니다.</p>
-  </section>
+    <aside>
+      <div class="side-inner">
+        <div class="widget widget-tools">
+          <h2>계산기</h2>
+          <div class="tools">
+            <a class="tool-card" href="/age/">
+              <span class="emoji">🎂</span>
+              <div class="txt">
+                <h3>강아지·고양이 나이 계산기</h3>
+                <p>우리 아이는 사람 나이로 몇 살일까? 생애 단계까지 알려드립니다.</p>
+                <span class="go">계산해 보기 →</span>
+              </div>
+              <span class="paw">🐾</span>
+            </a>
+            <a class="tool-card" href="/feed/">
+              <span class="emoji">🍚</span>
+              <div class="txt">
+                <h3>사료 급여량 계산기</h3>
+                <p>체중과 사료 칼로리를 넣으면 하루 급여량(g)과 끼니별 양을 계산합니다.</p>
+                <span class="go">계산해 보기 →</span>
+              </div>
+              <span class="paw">🐾</span>
+            </a>
+          </div>
+        </div>
+        <div class="widget widget-tags">
+          <h2>주제별 가이드</h2>
+          <!-- AUTO:TAGS:START -->
+          <div class="tag-list">
+            <a href="/guide/#%EC%82%AC%EB%A3%8C">사료</a>
+            <a href="/guide/#%EA%B1%B4%EA%B0%95%C2%B7%ED%96%89%EB%8F%99">건강·행동</a>
+            <a href="/guide/#%EC%9A%A9%ED%92%88">용품</a>
+            <a href="/guide/#%EB%85%B8%EB%A0%B9%EB%AC%98">노령묘</a>
+          </div>
+<!-- AUTO:TAGS:END -->
+        </div>
+      </div>
+    </aside>
 
-  <section>
-    <h2>읽어볼 만한 글</h2>
-    <!-- AUTO:HOME:START -->
-      <ol class="post-list">
-        <li><a href="/guide/silsu.html"><span class="n">01</span><span class="t">고양이 소변 실수, 원인 점검 5가지</span><span class="g">→</span></a></li>
-        <li><a href="/guide/dubu.html"><span class="n">02</span><span class="t">두부모래 장단점</span><span class="g">→</span></a></li>
-        <li><a href="/guide/hwajangsil.html"><span class="n">03</span><span class="t">고양이 화장실 위치와 개수</span><span class="g">→</span></a></li>
-        <li><a href="/guide/baltop.html"><span class="n">04</span><span class="t">고양이 발톱 깎는 법</span><span class="g">→</span></a></li>
-        <li><a href="/guide/junbi.html"><span class="n">05</span><span class="t">고양이 입양 준비물 — 필수 7가지</span><span class="g">→</span></a></li>
-      </ol>
-      <a class="rel-more" href="/guide/">가이드 전체 17편 보기 →</a>
+    <main>
+      <section>
+        <h2>읽어볼 만한 글</h2>
+        <!-- AUTO:HOME:START -->
+        <div class="grid">
+        <a class="post-card" href="/guide/silsu.html">
+          <img class="thumb" src="/img/silsu-hero.webp" alt="" width="1200" height="686" loading="lazy" decoding="async">
+          <span class="tag">건강·행동</span>
+          <h3>고양이 소변 실수, 원인 점검 5가지</h3>
+          <p>청소·모래·위치 점검 순서, 스프레이와의 구분, 방광염 등 병원 가야 하는 신호와 냄새 제거까지.</p>
+          <span class="foot"><span class="date">2026년 9월 4일</span><span class="go">읽어보기 →</span></span>
+        </a>
+        <a class="post-card" href="/guide/dubu.html">
+          <img class="thumb" src="/img/dubu-hero.webp" alt="" width="1200" height="686" loading="lazy" decoding="async">
+          <span class="tag">용품</span>
+          <h3>두부모래 장단점</h3>
+          <p>먼지 적고 변기 처리되는 장점부터 응고력·여름 벌레·가격까지. 벌레 예방 보관법과 안전하게 갈아타는 순서.</p>
+          <span class="foot"><span class="date">2026년 9월 2일</span><span class="go">읽어보기 →</span></span>
+        </a>
+        <a class="post-card" href="/guide/hwajangsil.html">
+          <img class="thumb" src="/img/hwajangsil-hero.webp" alt="" width="1200" height="686" loading="lazy" decoding="async">
+          <span class="tag">건강·행동</span>
+          <h3>고양이 화장실 위치와 개수</h3>
+          <p>마릿수+1 공식, 두면 좋은 자리와 피해야 할 자리, 크기·뚜껑 선택, 실수할 때 점검 순서까지.</p>
+          <span class="foot"><span class="date">2026년 8월 31일</span><span class="go">읽어보기 →</span></span>
+        </a>
+        <a class="post-card" href="/guide/baltop.html">
+          <img class="thumb" src="/img/baltop-hero.webp" alt="" width="1200" height="686" loading="lazy" decoding="async">
+          <span class="tag">건강·행동</span>
+          <h3>고양이 발톱 깎는 법</h3>
+          <p>혈관(퀵) 위치 확인, 깎는 순서와 타이밍, 싫어하는 아이 단계별 적응, 피가 났을 때 대처까지.</p>
+          <span class="foot"><span class="date">2026년 8월 29일</span><span class="go">읽어보기 →</span></span>
+        </a>
+        <a class="post-card" href="/guide/junbi.html">
+          <img class="thumb" src="/img/junbi-hero.webp" alt="" width="1200" height="686" loading="lazy" decoding="async">
+          <span class="tag">용품</span>
+          <h3>고양이 입양 준비물 — 필수 7가지</h3>
+          <p>데려오기 전 꼭 갖춰야 할 필수 7가지와 미뤄도 되는 것, 집 안전 점검, 첫날 요령까지.</p>
+          <span class="foot"><span class="date">2026년 8월 27일</span><span class="go">읽어보기 →</span></span>
+        </a>
+        <a class="post-card" href="/guide/yebang.html">
+          <img class="thumb" src="/img/yebang-hero.webp" alt="" width="1200" height="686" loading="lazy" decoding="async">
+          <span class="tag">건강·행동</span>
+          <h3>고양이 예방접종 — 시기와 종류</h3>
+          <p>기초 접종 일정과 종합백신·광견병 항목, 실내묘가 맞아야 하는 이유, 접종 후 이상 신호까지.</p>
+          <span class="foot"><span class="date">2026년 8월 26일</span><span class="go">읽어보기 →</span></span>
+        </a>
+        </div>
+        <a class="rel-more" href="/guide/">가이드 전체 17편 보기 →</a>
 <!-- AUTO:HOME:END -->
-  </section>
+      </section>
 
-  <section>
-    <h2>자주 묻는 질문</h2>
-    <details>
-      <summary>계산 결과는 어떤 기준으로 나오나요?</summary>
-      <div class="a">나이 환산은 수의학계에서 널리 쓰이는 환산표(첫해 15살, 둘째 해 9살, 이후 크기별 가산)를, 사료 급여량은 휴지기 에너지 요구량(RER) 공식을 기반으로 합니다. 각 계산기 페이지 하단에 기준을 자세히 적어 두었습니다.</div>
-    </details>
-    <details>
-      <summary>결과를 그대로 따라도 되나요?</summary>
-      <div class="a">계산기는 참고용 가이드입니다. 아이마다 체질·활동량·건강 상태가 달라서, 실제 급여량이나 건강 관리는 사료 포장지의 권장표와 수의사 상담을 우선하세요.</div>
-    </details>
-    <details>
-      <summary>다른 계산기도 추가되나요?</summary>
-      <div class="a">네. 예방접종 일정, 먹어도 되는 음식 사전 등 집사·견주에게 필요한 것들을 계속 추가할 예정입니다.</div>
-    </details>
-  </section>
+      <section>
+        <h2>이 사이트는요</h2>
+        <p>반려동물을 키우다 보면 의외로 <b>숫자가 궁금한 순간</b>이 많습니다. 우리 아이가 사람 나이로 몇 살인지, 사료는 하루에 몇 g을 줘야 하는지, 포장지 급여표는 왜 이렇게 복잡한지.</p>
+        <p>그때마다 바로 답을 주는 계산기를 하나씩 만들어 모으고 있습니다. 전부 무료이고, 가입 없이 쓸 수 있습니다.</p>
+      </section>
+
+      <section>
+        <h2>자주 묻는 질문</h2>
+        <details>
+          <summary>계산 결과는 어떤 기준으로 나오나요?</summary>
+          <div class="a">나이 환산은 수의학계에서 널리 쓰이는 환산표(첫해 15살, 둘째 해 9살, 이후 크기별 가산)를, 사료 급여량은 휴지기 에너지 요구량(RER) 공식을 기반으로 합니다. 각 계산기 페이지 하단에 기준을 자세히 적어 두었습니다.</div>
+        </details>
+        <details>
+          <summary>결과를 그대로 따라도 되나요?</summary>
+          <div class="a">계산기는 참고용 가이드입니다. 아이마다 체질·활동량·건강 상태가 달라서, 실제 급여량이나 건강 관리는 사료 포장지의 권장표와 수의사 상담을 우선하세요.</div>
+        </details>
+        <details>
+          <summary>다른 계산기도 추가되나요?</summary>
+          <div class="a">네. 예방접종 일정, 먹어도 되는 음식 사전 등 집사·견주에게 필요한 것들을 계속 추가할 예정입니다.</div>
+        </details>
+      </section>
+    </main>
+
+  </div>
 
   <footer>
     <p class="disclaimer">본 사이트의 계산기는 참고용 도구이며, 반려동물의 건강에 관한 결정은 수의사와 상담하세요.</p>

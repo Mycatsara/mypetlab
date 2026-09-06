@@ -31,14 +31,20 @@ description: 마이펫랩 mypetlab.kr 디자인 규칙(색상·폰트·컴포넌
 - eyebrow: 12px/700 letter-spacing 2px, 주황 글자+1.5px 주황 테두리, radius 4px
 
 ## 4. 레이아웃
-- `.wrap{max-width:560px}` 홈·계산기 / `640px` 글. `padding:32px 20px 60px`
-- 모바일 우선 단일 컬럼. 계산기 상단 `.home-link "← 마이펫랩 홈"`, 글 상단 `.crumb 홈 › 가이드 › 주제`
+- **홈 `.wrap{max-width:1040px}` 2단** (2026-09-06 개편, 눈치 구조 차용): 왼쪽 본문 `main`(≈672px) + 오른쪽 `aside` 300px, `gap:28px`. 마크업은 **aside가 먼저**(모바일에서 계산기가 글 위로 오도록) 오고 PC에서는 `grid-column`으로 열을 바꾼다. 사이드바 `.side-inner`는 `sticky top:20px`
+- 계산기 `560px` / 글·가이드 목록·소개 `640px`. `padding:32px 20px 60px`(홈은 24px 위)
+- **상단 머리 `.site`(홈·가이드·계산기·소개 공용)**: `.title` 30px/900 letter-spacing -1px + 발바닥 SVG(주황, `::after` 30×28) → `.desc` 13px sub → `nav.menu`(홈·가이드·나이 계산기·사료 계산기·소개, 14.5px/700 line-height 46px, 현재·hover는 `--orange-deep` 글자 + `inset 0 -2px 0 var(--orange)` 밑줄). 아래 1.5px 주황 선. **원본은 `tools/sitehead.js`** — 새 페이지에는 `node tools/sitehead.js 파일` 로 심고, 조각을 고치면 `--force`로 다시 심는다. 홈은 `<h1 class="title">`, 나머지는 `<a class="title" href="/">`. 예전 `.home-link`·`.back "← 마이펫랩 홈"`은 메뉴가 대신하므로 없앴다(글 하단 `.back "← 가이드 목록으로"`는 유지). 글(guide/*.html) 17편에는 아직 안 넣었다 — 다음 글 발행 뒤 일괄 예정
+- 글 상단 `.crumb 홈 › 가이드 › 주제` 유지(BreadcrumbList와 짝)
+- 모바일(≤768px): 홈은 1단, 사이드바 태그 위젯은 숨김(`.widget-tags{display:none}`), 계산기 2장 가로 배치 → ≤560px 세로 배치·가로형 카드(이모지 왼쪽, 설명문 숨김). ≤560px 글 카드 1열
 - 세로 리듬: 헤더 → 탭(26px) → 카드(14px) → 결과(22px) → 섹션(44px) → 푸터(48px)
 
 ## 5. 컴포넌트 (클래스명·수치 고정)
 | 컴포넌트 | 규칙 |
 |---|---|
-| `.tool-card` 홈 도구 카드 | paper, 1px line, **radius 16px**, padding 22px 20px, 그림자 `0 3px 12px rgba(43,36,28,.06)`, hover 주황 테두리+`translateY(-2px)`, 우하단 `.paw` 워터마크(opacity .07, -20deg) |
+| `.tool-card` 홈 계산기 카드 (사이드바) | paper, **1.5px 주황 테두리**(사이드로 빠진 만큼 강조), **radius 16px**, padding 18px, 그림자 `0 3px 12px`, hover `translateY(-2px)`+`0 6px 20px`, 우하단 `.paw` 워터마크(opacity .07, -20deg). 안은 `.emoji`(30px) → `.txt`(h3 17px/900 · p 13.5px sub · `.go`) |
+| `.widget` 사이드바 위젯 | `margin-bottom:22px`, h2 14px/900 + 1.5px 먹색 밑줄(눈치 위젯 머리와 동일). 홈 위젯 2개: 계산기 · 주제별 가이드(`.tag-list`) |
+| `.tag-list` 태그 칩 링크 | 가이드 목록 `.chip`과 같은 모양(pill, 1.5px line, 13px/700), hover 주황 테두리+#FDF1E8. 링크는 `/guide/#태그` — 가이드 목록이 해시를 읽어 그 칩을 눌러 준다 |
+| `.grid` + `.post-card` 홈 글 카드 | `repeat(2,minmax(0,1fr)) gap:14px`(≤560px 1열). 카드 paper 1px line radius 14px padding 16px, hover 주황 테두리. 안은 `.thumb`(16:9 webp, radius 10px, 1px line, `img/<슬러그>-hero.webp` 있을 때만) → `.tag` 칩 → h3 16.5px/900 → p 13.5px 2줄 말줄임 → `.foot`(`.date` 12px · `.go`). **`tools/buildlist.js`가 생성** — 손으로 쓰지 않는다 |
 | `.tabs` 동물 선택 | 트랙 #EAE3D5 radius 12px padding 4px / 버튼 15px/700 radius 9px / `.on` paper + `0 1px 3px rgba(43,36,28,.12)` |
 | `.card` 입력 카드 | paper, 1px line, radius 14px, padding 22px 20px |
 | `input[type=text]` | Plex Mono 24px/600 우측 정렬, 2px line radius 10px, focus 주황 |
@@ -90,7 +96,11 @@ description: 마이펫랩 mypetlab.kr 디자인 규칙(색상·폰트·컴포넌
 - 건강·수의학 문구는 원고 그대로. 디자인 작업 중 문구 수정 금지
 - 조급함 파는 문구 금지
 
+## 8-2. 로컬 미리보기
+`node tools/serve.js`(3458) 또는 `.claude/launch.json`의 `mypetlab` 설정으로 서버를 띄워 375px·1280px 두 폭에서 확인한다. 홈은 `?ga=off`로 열어 집계에서 뺀다.
+
 ## 9. 모바일 체크 (배포 전)
+- 홈: 375px에서 메뉴 5개가 한 줄인지, 계산기 카드 2장이 글 목록 **위**에 오는지, `scrollWidth`가 375를 넘지 않는지
 - 375px에서 `.r-total .v` 36px가 한 줄인지, 탭 라벨(이모지 포함)이 안 꺾이는지, `.size-chips` 3개가 한 줄에 들어가는지
 - 글은 호흡 단위 줄바꿈(`~입니다.`), 표는 가로 스크롤 없이 들어가는지(열 4개 이하 권장)
 - 인앱브라우저 폰트 확대 시 `-webkit-text-size-adjust:100%`
