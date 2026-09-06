@@ -43,11 +43,14 @@
 
 /* ---------- 2단 레이아웃: 본문 + 사이드바 ---------- */
 .layout{max-width:1040px;margin:0 auto}
-.side{display:none}
+/* 9/6 밤: 모바일에서도 사이드바(카테고리·검색·최근 글)를 본문 아래에(눈치와 동일). 계산기 박스는 위의 계산기 줄이 대신하므로 숨김 */
+.side{display:block;max-width:760px;margin:0 auto;padding:8px 20px 40px}
+.side .side-box.calcs{display:none}
 @media (min-width:900px){
   .layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:28px;align-items:start;padding:0 20px}
   .main>.wrap{margin:0;padding-left:0;padding-right:0}
-  .side{display:block;padding:32px 0 40px}
+  .side{max-width:none;margin:0;padding:32px 0 40px}
+  .side .side-box.calcs{display:block}
 }
 body>footer{max-width:1040px;margin-left:auto;margin-right:auto;padding:0 20px 60px}
 
