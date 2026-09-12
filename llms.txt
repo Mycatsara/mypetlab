@@ -27,13 +27,14 @@
 ## 가이드
 
 <!-- AUTO:LLMS:START -->
-- [가이드 전체 목록](https://mypetlab.kr/guide/): 고양이 돌봄 가이드 19편
+- [가이드 전체 목록](https://mypetlab.kr/guide/): 고양이 돌봄 가이드 20편
 - [처음 키우는 집사](https://mypetlab.kr/guide/start/): 입양 준비물·화장실 자리·예방접종·중성화 (4편)
   - [고양이 화장실 위치와 개수](https://mypetlab.kr/guide/hwajangsil.html): 마릿수+1 공식, 두면 좋은 자리와 피해야 할 자리, 크기·뚜껑 선택, 실수할 때 점검 순서까지.
   - [고양이 입양 준비물 — 필수 7가지](https://mypetlab.kr/guide/junbi.html): 데려오기 전 꼭 갖춰야 할 필수 7가지와 미뤄도 되는 것, 집 안전 점검, 첫날 요령까지.
   - [고양이 예방접종 — 시기와 종류](https://mypetlab.kr/guide/yebang.html): 기초 접종 일정과 종합백신·광견병 항목, 실내묘가 맞아야 하는 이유, 접종 후 이상 신호까지.
   - [고양이 중성화 시기 — 몇 개월에 할까](https://mypetlab.kr/guide/neuter.html): 생후 5~6개월 기준과 발정 전후 차이, 비용 확인법, 수술 전후 관리와 체중 관리까지.
-- [건강·행동 고민](https://mypetlab.kr/guide/care/): 소변 실수·구토·잠·음수량·발톱 같은 일상 신호 (5편)
+- [건강·행동 고민](https://mypetlab.kr/guide/care/): 소변 실수·구토·잠·음수량·발톱 같은 일상 신호 (6편)
+  - [고양이 이사 스트레스 줄이는 법](https://mypetlab.kr/guide/isa.html): 이사 전 이동장 적응부터 당일 탈출 예방, 새집 방 하나에서 시작하는 순서와 병원에 가야 할 신호까지.
   - [고양이 소변 실수, 원인 점검 5가지](https://mypetlab.kr/guide/silsu.html): 청소·모래·위치 점검 순서, 스프레이와의 구분, 방광염 등 병원 가야 하는 신호와 냄새 제거까지.
   - [고양이 발톱 깎는 법](https://mypetlab.kr/guide/baltop.html): 혈관(퀵) 위치 확인, 깎는 순서와 타이밍, 싫어하는 아이 단계별 적응, 피가 났을 때 대처까지.
   - [고양이 구토, 헤어볼일까 병원 갈 일일까](https://mypetlab.kr/guide/to.html): 헤어볼·공복토·과식 구토처럼 지켜봐도 되는 경우와, 바로 병원에 가야 할 신호 8가지 정리.
