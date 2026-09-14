@@ -27,7 +27,7 @@
 ## 가이드
 
 <!-- AUTO:LLMS:START -->
-- [가이드 전체 목록](https://mypetlab.kr/guide/): 고양이 돌봄 가이드 20편
+- [가이드 전체 목록](https://mypetlab.kr/guide/): 고양이 돌봄 가이드 21편
 - [처음 키우는 집사](https://mypetlab.kr/guide/start/): 입양 준비물·화장실 자리·예방접종·중성화 (4편)
   - [고양이 화장실 위치와 개수](https://mypetlab.kr/guide/hwajangsil.html): 마릿수+1 공식, 두면 좋은 자리와 피해야 할 자리, 크기·뚜껑 선택, 실수할 때 점검 순서까지.
   - [고양이 입양 준비물 — 필수 7가지](https://mypetlab.kr/guide/junbi.html): 데려오기 전 꼭 갖춰야 할 필수 7가지와 미뤄도 되는 것, 집 안전 점검, 첫날 요령까지.
@@ -40,7 +40,8 @@
   - [고양이 구토, 헤어볼일까 병원 갈 일일까](https://mypetlab.kr/guide/to.html): 헤어볼·공복토·과식 구토처럼 지켜봐도 되는 경우와, 바로 병원에 가야 할 신호 8가지 정리.
   - [고양이가 잠을 너무 많이 자요 — 정상일까](https://mypetlab.kr/guide/jam.html): 나이별 정상 수면시간, 많이 자는 이유, 아파서 늘어진 잠을 구분하는 신호와 병원 가야 할 때.
   - [고양이가 물을 안 마셔요 — 음수량 늘리는 법 7가지](https://mypetlab.kr/guide/mul.html): 하루 적정 음수량 기준, 물그릇 위치와 개수, 분수형 급수기, 습식 활용까지 실전 방법 7가지.
-- [용품·사료 고르기](https://mypetlab.kr/guide/goods/): 모래·캣타워·자동급식기·스크래쳐·사료 고르는 기준 (9편)
+- [용품·사료 고르기](https://mypetlab.kr/guide/goods/): 모래·캣타워·자동급식기·스크래쳐·사료 고르는 기준 (10편)
+  - [고양이 자동장난감 고르는 법](https://mypetlab.kr/guide/autotoy.html): 감독 조건부터 끈과 작은 부품, 타이머·전원·세척까지 구매 전에 확인할 5가지.
   - [고양이 정수기 고르는 법](https://mypetlab.kr/guide/fountain.html): 물 닿는 부분 재질, 펌프 분리 세척, 필터 4주 교체, 소음과 물 흐름, 정전 시 남는 물까지. 정수기를 들여도 물그릇을 남겨야 하는 이유도 정리.
   - [고양이 자동화장실 고르는 법](https://mypetlab.kr/guide/autolitter.html): 응고형 모래 호환, 최소 체중과 입구 크기, 회전 중 안전 구조, 배출통 주기, 둘 자리까지. 자동화장실이 오히려 안 맞는 집도 정리.
   - [두부모래 장단점](https://mypetlab.kr/guide/dubu.html): 먼지 적고 변기 처리되는 장점부터 응고력·여름 벌레·가격까지. 벌레 예방 보관법과 안전하게 갈아타는 순서.
